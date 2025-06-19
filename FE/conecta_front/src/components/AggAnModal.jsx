@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
-import { getData, postData } from '../services/fetch';
+import { getData, postData, updateData } from '../services/fetch';
 
 
 function AggAnModal({ abrirModal, cerrarModal }) {
