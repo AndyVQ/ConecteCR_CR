@@ -1,0 +1,35 @@
+card-reporte {
+  background: #f9d2a5;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  max-width: 380px;
+  margin: 1rem auto;
+  color: #2b2b2b;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-reporte:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.imagen-reporte {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.titulo-reporte {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.descripcion-reporte,
+.direccion-reporte,
+.comunidad-reporte,
+.fecha-reporte,
+.gravedad-reporte {
+  margin-bottom: 0.4rem;
+}

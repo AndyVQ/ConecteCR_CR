@@ -1,0 +1,125 @@
+.admin-home {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+ 
+  font-family: Arial, sans-serif;
+}
+
+.admin-card {
+  background-color: #d8f3dc;
+  border-radius: 20px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-card-header h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.admin-card-header img {
+  width: 30px;
+  height: 30px;
+}
+
+.admin-card-body {
+  margin-top: 15px;
+}
+
+.admin-value {
+  float: right;
+  font-weight: bold;
+}
+
+hr {
+  margin: 10px 0;
+  border: 1px solid #b0dab9;
+}
+
+.admin-campaign-status p {
+  margin-bottom: 5px;
+}
+
+.admin-bar {
+  width: 100%;
+  height: 16px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  color: white;
+  font-size: 12px;
+}
+
+.admin-finalized {
+  background-color: #7e7e7e;
+}
+
+.admin-active {
+  background-color: #2d6a4f;
+}
+
+.admin-search {
+  width: 100%;
+  padding: 6px 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 8px;
+}
+
+.admin-search-1 {
+  width: 30%;
+  padding: 6px 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 8px;
+}
+
+.admin-report {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #a5c9aa;
+  padding: 6px 0;
+  font-size: 14px;
+}
+
+.admin-chart-placeholder {
+  width: 100%;
+  height: 150px;
+  background-color: #a3cba5;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.admin-photo-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-photo-carousel img {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.admin-photo-carousel button {
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}

@@ -1,0 +1,143 @@
+.login-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 60%;
+ 
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0, 255, 128, 0.2);
+  margin: 120px auto;
+  background-color: white;
+  background: linear-gradient(to right, #eafff2 100%, #ffffff 100%);
+}
+.boton-ojo {
+  border: none;
+  background-color: transparent;
+  position: relative;
+  left: 130px;
+  top: 36px;
+  color: #007f3d;
+}
+.cont-img {
+  background: linear-gradient(to bottom, #b7e8c2, #66bb6a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    width: 250px;
+  }
+}
+
+.logo {
+  width: 140px;
+  animation: pulseLogo 3s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 10px #2ecc71);
+}
+
+@keyframes pulseLogo {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.04);
+  }
+}
+
+.section-inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-usuario,
+.input-password {
+  width: 100%;
+  max-width: 300px;
+  padding: 14px;
+  margin-bottom: -10px;
+  border-radius: 30px;
+  background-color: #e9fef2;
+  border: 2px solid #00c853;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-usuario::placeholder,
+.input-password::placeholder {
+  font-size: 14px;
+}
+
+.input-usuario:focus,
+.input-password:focus {
+  box-shadow: 0 0 10px #69f0ae;
+}
+
+.botton-iniciar {
+  width: 100%;
+  max-width: 310px;
+  padding: 14px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #003d1f;
+  background: linear-gradient(to right, #00e676, #00c853);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 8px 30px rgba(0, 255, 150, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 20px;
+}
+
+.botton-iniciar:hover {
+  transform: scale(1.04);
+  box-shadow: 0 10px 20px rgba(0, 255, 150, 0.45);
+}
+
+.h2 {
+  color: rgb(66, 185, 88);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+@media screen and (max-width: 768px) {
+  .cont-img {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+  }
+
+  .login-container {
+    grid-template-columns: 1fr;
+    width: 90%;
+  }
+
+  .section-inputs {
+    padding: 20px;
+  }
+
+  .input-usuario,
+  .input-password,
+  .botton-iniciar {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+.registerH2 {
+  margin-left: 250px;
+  color: #136c40;
+  text-align: center;
+  transition: color 0.3s ease;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  position: relative;
+  top: 3px;
+}
+
+.registerH2 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.registerH2 a:hover {
+  color: #007f3d;
+  text-decoration: underline;
+}

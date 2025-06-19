@@ -1,0 +1,4 @@
+    .pagCampana {
+        display: grid;
+        grid-template-columns: repeat(5,250px);
+    }

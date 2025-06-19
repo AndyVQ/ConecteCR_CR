@@ -1,0 +1,71 @@
+.card-campana {
+  background: linear-gradient(145deg, #bfe1c0, #e1f5e7);
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(120, 190, 140, 0.15);
+  padding: 1rem;
+  margin: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-campana:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(120, 190, 140, 0.3);
+}
+
+.titulo-campana {
+  color: #2e7d32;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.descripcion-campana {
+  color: #4b8b4a;
+  line-height: 1.5;
+}
+
+.direccion-campana,
+.fecha-campana,
+.comunidad-campana {
+  color: #5d9c6b;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.cont-apoyos {
+  background-color: #d4edda;
+  color: #1b5e20;
+  border: none;
+  font-weight: bold;
+  width: 60px;
+  text-align: center;
+  border-radius: 30px;
+  margin-bottom: 1rem;
+  padding: 0.25rem 0.5rem;
+  animation: fade-in 1s ease-in-out;
+}
+
+.apoyar-btn {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  background-color: #81c784 !important;
+  border: none;
+}
+
+.apoyar-btn:hover {
+  background-color: #66bb6a !important;
+  transform: scale(1.05);
+}
+
+.apoyar-btn.clicked {
+  background-color: #a5d6a7 !important;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

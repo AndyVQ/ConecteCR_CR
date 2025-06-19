@@ -1,0 +1,38 @@
+.card-peticion {
+  background: #4ace5c;
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  max-width: 380px;
+  margin: 1.5rem auto;
+  color: #ffffff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.card-peticion:hover {
+  background: #b1efb6;
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.titulo-peticion {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.descripcion-peticion,
+.comunidad-peticion,
+.fecha-peticion {
+  margin-bottom: 0.4rem;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  color: #e0f2f1;
+}
+
+.fecha-peticion {
+  font-weight: 700;
+}
+
