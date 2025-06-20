@@ -1,23 +1,48 @@
-import { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Modal from 'react-bootstrap/Modal';
-import { getData, postData } from '../services/fetch';
+import { useEffect, useState } from "react";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
+import { getData, postData } from "../services/fetch";
 
 function AggNotModal({ abrirModal, cerrarModal }) {
-  const [nombre, setNombre] = useState('');
-  const [descripcion, setDescripcion] = useState('');
-  const [fecha, setFecha] = useState('');
+  const [nombre, setNombre] = useState("");
+  const [descripcion, setDescripcion] = useState("");
+  const [fecha, setFecha] = useState("");
+  const [imagen, setImagen] = useState(null);
+
+  const imagenCloudinary = async (foto) => {
+    const formData = new FormData();
+    formData.append("file", foto);
+    formData.append("upload_preset", "imagen_pag");
+
+    const response = await fetch(
+      "https://api.cloudinary.com/v1_1/dzaysmn8f/image/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    const data = await response.json();
+    console.log(data);
+    console.log("URL de la imagen:", data.secure_url);
+
+    return data.secure_url;
+  };
 
   const enviarNoticia = async () => {
+    let urlImagen = "";
+    if (imagen) {
+      urlImagen = await imagenCloudinary(imagen);
+    }
     const nuevaNoticia = {
       descripcion_noticia: descripcion,
       fecha_noticia: fecha,
-      imagen_noticia: 'abc',
       titular_notica: nombre,
       usuario: 1,
+      imagen_noticia: urlImagen,
     };
-    await postData('intNoticias/noticia_create/', nuevaNoticia);
+    await postData("intNoticias/noticia_create/", nuevaNoticia);
   };
 
   return (
@@ -33,7 +58,7 @@ function AggNotModal({ abrirModal, cerrarModal }) {
               type="text"
               placeholder="Nombre de la Noticia"
               value={nombre}
-              onChange={e => setNombre(e.target.value)}
+              onChange={(e) => setNombre(e.target.value)}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="descripcionInput">
@@ -42,7 +67,7 @@ function AggNotModal({ abrirModal, cerrarModal }) {
               as="textarea"
               placeholder="Descripción"
               value={descripcion}
-              onChange={e => setDescripcion(e.target.value)}
+              onChange={(e) => setDescripcion(e.target.value)}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="fechaInput">
@@ -50,7 +75,14 @@ function AggNotModal({ abrirModal, cerrarModal }) {
             <Form.Control
               type="date"
               value={fecha}
-              onChange={e => setFecha(e.target.value)}
+              onChange={(e) => setFecha(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="imgInput">
+            <Form.Label>Imagen campaña</Form.Label>
+            <Form.Control
+              type="file"
+              onChange={(e) => setImagen(e.target.files[0])}
             />
           </Form.Group>
         </Form>

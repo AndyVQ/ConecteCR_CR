@@ -1,38 +1,62 @@
-import { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Modal from 'react-bootstrap/Modal';
-import { getData, postData } from '../services/fetch';
+import { useEffect, useState } from "react";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
+import { getData, postData } from "../services/fetch";
 
 function AggCampModal({ abrirModal, cerrarModal }) {
   const [comunidades, setComunidades] = useState([]);
-  const [comunidad, setComunidad] = useState('');
-  const [nombre, setNombre] = useState('');
-  const [descripcion, setDescripcion] = useState('');
-  const [direccion, setDireccion] = useState('');
-  const [fecha, setFecha] = useState('');
+  const [comunidad, setComunidad] = useState("");
+  const [nombre, setNombre] = useState("");
+  const [descripcion, setDescripcion] = useState("");
+  const [direccion, setDireccion] = useState("");
+  const [fecha, setFecha] = useState("");
+  const [imagen, setImagen] = useState(null);
+
+  const imagenCloudinary = async (foto) => {
+    const formData = new FormData();
+    formData.append("file", foto);
+    formData.append("upload_preset", "imagen_pag");
+
+    const response = await fetch(
+      "https://api.cloudinary.com/v1_1/dzaysmn8f/image/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    const data = await response.json();
+    console.log(data);
+    console.log("URL de la imagen:", data.secure_url);
+
+    return data.secure_url;
+  };
 
   useEffect(() => {
     async function cargarComunidades() {
-      const datos = (await getData('comunidades/comunidades_create/')) || [];
+      const datos = (await getData("comunidades/comunidades_create/")) || [];
       setComunidades(datos);
     }
     cargarComunidades();
   }, []);
-  
+
   const enviarCampana = async () => {
+    let urlImagen = "";
+    if (imagen) {
+      urlImagen = await imagenCloudinary(imagen);
+    }
     const nuevaCampana = {
       comunidad,
       nombre_campana: nombre,
       descripcion_campana: descripcion,
       direccion_campana: direccion,
       fecha_campana: fecha,
-      imagen_campana: 'abc',
       usuario: 1,
+      imagen_campana: urlImagen,
     };
-    await postData('intCampanas/campanas/', nuevaCampana);
+    await postData("intCampanas/campanas/", nuevaCampana);
   };
-
   return (
     <Modal show={abrirModal} onHide={cerrarModal}>
       <Modal.Header closeButton>
@@ -44,10 +68,10 @@ function AggCampModal({ abrirModal, cerrarModal }) {
             <Form.Label>Comunidad</Form.Label>
             <Form.Select
               value={comunidad}
-              onChange={e => setComunidad(e.target.value)}
+              onChange={(e) => setComunidad(e.target.value)}
             >
               <option value="">Selecciona comunidad</option>
-              {comunidades.map(c => (
+              {comunidades.map((c) => (
                 <option key={c.id} value={c.id}>
                   {c.nombre_comunidad}
                 </option>
@@ -60,7 +84,7 @@ function AggCampModal({ abrirModal, cerrarModal }) {
               type="text"
               placeholder="Nombre de Campaña"
               value={nombre}
-              onChange={e => setNombre(e.target.value)}
+              onChange={(e) => setNombre(e.target.value)}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="descripcionInput">
@@ -69,7 +93,7 @@ function AggCampModal({ abrirModal, cerrarModal }) {
               as="textarea"
               placeholder="Descripción"
               value={descripcion}
-              onChange={e => setDescripcion(e.target.value)}
+              onChange={(e) => setDescripcion(e.target.value)}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="direccionInput">
@@ -78,7 +102,7 @@ function AggCampModal({ abrirModal, cerrarModal }) {
               type="text"
               placeholder="Dirección"
               value={direccion}
-              onChange={e => setDireccion(e.target.value)}
+              onChange={(e) => setDireccion(e.target.value)}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="fechaInput">
@@ -86,7 +110,14 @@ function AggCampModal({ abrirModal, cerrarModal }) {
             <Form.Control
               type="date"
               value={fecha}
-              onChange={e => setFecha(e.target.value)}
+              onChange={(e) => setFecha(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="imgInput">
+            <Form.Label>Imagen campaña</Form.Label>
+            <Form.Control
+              type="file"
+              onChange={(e) => setImagen(e.target.files[0])}
             />
           </Form.Group>
         </Form>

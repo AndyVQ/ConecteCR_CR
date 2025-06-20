@@ -57,7 +57,6 @@ async function deleteProd(id) {
               <th>Reporte</th>
               <th>Descripción</th>
               <th>Fecha de creación</th>
-              <th>Imagen</th>
               <th>Gravedad</th>
               <th>estado</th>
               <th>Editar</th>
@@ -71,7 +70,6 @@ async function deleteProd(id) {
                 <td>{reporte.nombre_reporte}</td>
                 <td>{reporte.descripcion_reporte}</td>
                 <td>{reporte.fecha_reporte}</td>
-                <td>{reporte.imagen_reporte}</td>
                 <td>{reporte.gravedad_reporte}</td>
                 <td>{reporte.estado_reporte}</td>
                 <td>

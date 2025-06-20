@@ -57,7 +57,6 @@ async function deleteProd(id) {
               <th>Noticia</th>
               <th>Descripción</th>
               <th>Fecha de creación</th>
-              <th>Imagen</th>
               <th>Editar</th>
             </tr>
           </thead>
@@ -68,9 +67,7 @@ async function deleteProd(id) {
                 <td>{news.titular_notica}</td>
                 <td>{news.descripcion_noticia}</td>
                 <td>{news.fecha_noticia}</td>
-                <td>{news.imagen_noticia}</td>
                 <td>
-                  <button>👁️</button>
                   <button onClick={() => abrirModalNoticia(news)}>✏️</button>
                   <button onClick={() => deleteProd(news.id)}>🗑️</button>
                 </td>

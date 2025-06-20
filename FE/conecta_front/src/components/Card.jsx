@@ -12,7 +12,7 @@ const cardsData = [
     title: 'Anuncios Comunitarios',
     description: 'Publica y descubre anuncios importantes de tu vecindario.',
     buttonText: 'Leer Anuncios',
-    redirectTo: '' // No tendrá redirección
+    redirectTo: '/PagAnunc'
   },
   {
     title: 'Foros de Discusión',

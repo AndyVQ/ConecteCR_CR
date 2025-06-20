@@ -14,6 +14,26 @@ function AggRepModal({ abrirModal, cerrarModal }) {
   const [imagen, setImagen] = useState('');
   const [gravedad, setGravedad] = useState('LEVE');
 
+  const imagenCloudinary = async (foto) => {
+    const formData = new FormData();
+    formData.append("file", foto);
+    formData.append("upload_preset", "imagen_pag");
+
+    const response = await fetch(
+      "https://api.cloudinary.com/v1_1/dzaysmn8f/image/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    const data = await response.json();
+    console.log(data);
+    console.log("URL de la imagen:", data.secure_url);
+
+    return data.secure_url;
+  };
+
   useEffect(() => {
     async function cargarComunidades() {
       const datos = (await getData('comunidades/comunidades_create/')) || [];
@@ -23,15 +43,19 @@ function AggRepModal({ abrirModal, cerrarModal }) {
   }, []);
 
   const enviarReporte = async () => {
+    let urlImagen = "";
+    if (imagen) {
+      urlImagen = await imagenCloudinary(imagen);
+    }
     const nuevoReporte = {
       comunidad,
       nombre_reporte: nombre,
       descripcion_reporte: descripcion,
       fecha_reporte: fecha,
       direccion_reportes: direccion,
-      imagen_reporte: imagen,
       gravedad_reporte: gravedad,
       usuario: 1,
+      imagen_reporte: urlImagen,
     };
     await postData('intReportes/reportes_create/', nuevoReporte);
   };
@@ -75,10 +99,10 @@ function AggRepModal({ abrirModal, cerrarModal }) {
               <option value="MEDIA">Media</option>
               <option value="ALTA">Alta</option>
             </Form.Select>
-          <Form.Group className="mb-3" controlId="imagenInput">
-            <Form.Label>Imagen</Form.Label>
-            <Form.Control type="text" placeholder="URL o base64" value={imagen} onChange={e => setImagen(e.target.value)} />
           </Form.Group>
+          <Form.Group className="mb-3" controlId="imgInput">
+            <Form.Label>Imagen del Reporte</Form.Label>
+            <Form.Control type="file" onChange={(e) => setImagen(e.target.files[0])} />
           </Form.Group>
         </Form>
       </Modal.Body>

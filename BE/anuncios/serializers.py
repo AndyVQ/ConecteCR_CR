@@ -8,4 +8,15 @@ class AnuncioSerializer(ModelSerializer):
     nombre_usuario = serializers.CharField(source="usuario.usuario.username", read_only=True)
     class Meta:
         model = Anuncio
-        fields = ["id", "nombre_usuario", "usuario", "comunidad", "nombre_anuncio", "descripcion_anuncio", "fecha_anuncio", "nombre_comunidad"]
+        fields = [
+            "id",
+            "nombre_usuario",
+            "usuario",
+            "comunidad",
+            "nombre_anuncio",
+            "descripcion_anuncio",
+            "fecha_anuncio",
+            "tipo_anuncio",
+            "nombre_comunidad",
+            "imagen_anuncio"
+        ]

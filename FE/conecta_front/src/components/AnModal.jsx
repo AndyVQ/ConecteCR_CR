@@ -9,13 +9,15 @@ function AnModal({ abrirModal, cerrarModal, anuncios }) {
 
     const [announce, setAnnounce] = useState([]);
     const [nombreAnuncioEditar, setNombreAnuncioEditar] = useState("");
-    const [descripcionAnuncioEditar, setDescripcionAnuncioEditar] = useState("");
+  const [descripcionAnuncioEditar, setDescripcionAnuncioEditar] = useState("");
+  const [tipoAnuncioEditar, setTipoAnuncioEditar] = useState("normal");
 
     useEffect(() => { 
         if(anuncios){
         setNombreAnuncioEditar(anuncios.nombre_anuncio);
         setDescripcionAnuncioEditar(anuncios.descripcion_anuncio);
-      } 
+        setTipoAnuncioEditar(anuncios.tipo_anuncio);
+      }
 
       async function fetchAnnounce() {
         const announceGet = await getData("intAnuncio/anuncio_get/") || [];
@@ -25,9 +27,10 @@ function AnModal({ abrirModal, cerrarModal, anuncios }) {
     }, [anuncios]);
 
     async function editProd(id) {  
-      let editInfo = { 
+      let editInfo = {
         "nombre_anuncio": nombreAnuncioEditar,
         "descripcion_anuncio": descripcionAnuncioEditar,
+        "tipo_anuncio": tipoAnuncioEditar,
       };
       await updateData(editInfo,"intAnuncio/anuncio_rud", id);
     }
@@ -59,6 +62,16 @@ function AnModal({ abrirModal, cerrarModal, anuncios }) {
                   value={descripcionAnuncioEditar || ""}
                   onChange={(e) => setDescripcionAnuncioEditar(e.target.value)}
                 />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="tipoEditar">
+                <Form.Label>Tipo de anuncio</Form.Label>
+                <Form.Select
+                  value={tipoAnuncioEditar}
+                  onChange={(e) => setTipoAnuncioEditar(e.target.value)}
+                >
+                  <option value="normal">Normal</option>
+                  <option value="grave">Grave</option>
+                </Form.Select>
               </Form.Group>
             </Form>
           </Modal.Body>

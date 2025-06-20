@@ -57,7 +57,6 @@ async function deleteProd(id) {
               <th>Votacion</th>
               <th>Descripción</th>
               <th>Fecha de creación</th>
-              <th>Imagen</th>
               <th>Editar</th>
             </tr>
           </thead>
@@ -69,9 +68,7 @@ async function deleteProd(id) {
                 <td>{votacion.nombre_votacion}</td>
                 <td>{votacion.descripcion_votacion}</td>
                 <td>{votacion.fecha_votacion}</td>
-                <td>{votacion.imagen_votacion}</td>
                 <td>
-                  <button>👁️</button>
                   <button onClick={() => abrirModalVotacion(votacion)}>✏️</button>
                   <button onClick={() => deleteProd(votacion.id)}>🗑️</button>
                 </td>
