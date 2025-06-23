@@ -1,34 +1,35 @@
-import { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Modal from 'react-bootstrap/Modal';
-import { getData, postData } from '../services/fetch';
+import { useEffect, useState } from "react";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
+import { getData, postData } from "../services/fetch";
 
-function AggVotModal({ abrirModal, cerrarModal }) {
+function AggVotModal({ abrirModal, cerrarModal, reload, setReload }) {
   const [comunidades, setComunidades] = useState([]);
-  const [comunidad, setComunidad] = useState('');
-  const [nombre, setNombre] = useState('');
-  const [descripcion, setDescripcion] = useState('');
-  const [fecha, setFecha] = useState('');
+  const [comunidad, setComunidad] = useState("");
+  const [nombre, setNombre] = useState("");
+  const [descripcion, setDescripcion] = useState("");
+  const [fecha, setFecha] = useState("");
 
   useEffect(() => {
     async function cargarComunidades() {
-      const datos = (await getData('comunidades/comunidades_create/')) || [];
+      const datos = (await getData("comunidades/comunidades_create/")) || [];
       setComunidades(datos);
     }
     cargarComunidades();
   }, []);
-  
+
   const enviarVotacion = async () => {
     const nuevaVotacion = {
       comunidad,
       nombre_votacion: nombre,
       descripcion_votacion: descripcion,
       fecha_votacion: fecha,
-      imagen_votacion: 'abc',
+      imagen_votacion: "abc",
       usuario: 1,
     };
-    await postData('intVotaciones/votaciones/', nuevaVotacion);
+    await postData("intVotaciones/votaciones/", nuevaVotacion);
+    setReload(!reload);
   };
 
   return (
@@ -42,10 +43,10 @@ function AggVotModal({ abrirModal, cerrarModal }) {
             <Form.Label>Comunidad</Form.Label>
             <Form.Select
               value={comunidad}
-              onChange={e => setComunidad(e.target.value)}
+              onChange={(e) => setComunidad(e.target.value)}
             >
               <option value="">Selecciona comunidad</option>
-              {comunidades.map(c => (
+              {comunidades.map((c) => (
                 <option key={c.id} value={c.id}>
                   {c.nombre_comunidad}
                 </option>
@@ -58,7 +59,7 @@ function AggVotModal({ abrirModal, cerrarModal }) {
               type="text"
               placeholder="Nombre de la Votación"
               value={nombre}
-              onChange={e => setNombre(e.target.value)}
+              onChange={(e) => setNombre(e.target.value)}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="descripcionInput">
@@ -67,7 +68,7 @@ function AggVotModal({ abrirModal, cerrarModal }) {
               as="textarea"
               placeholder="Descripción"
               value={descripcion}
-              onChange={e => setDescripcion(e.target.value)}
+              onChange={(e) => setDescripcion(e.target.value)}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="fechaInput">
@@ -75,7 +76,7 @@ function AggVotModal({ abrirModal, cerrarModal }) {
             <Form.Control
               type="date"
               value={fecha}
-              onChange={e => setFecha(e.target.value)}
+              onChange={(e) => setFecha(e.target.value)}
             />
           </Form.Group>
         </Form>

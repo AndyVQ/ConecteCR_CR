@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
-from .serializers import VotacionesSerializer
-from .models import Votaciones
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import VotacionesSerializer, VotoSerializer
+from .models import Votaciones, Voto
 from rest_framework.permissions import IsAuthenticated,BasePermission,SAFE_METHODS
 
 class PermisosPersonalizados(BasePermission):
@@ -50,4 +53,24 @@ class VotacionesListApiView(ListAPIView):
     queryset = Votaciones.objects.all()
     serializer_class = VotacionesSerializer
 
+class VotoCreateView(ListCreateAPIView):
+    queryset = Voto.objects.all()
+    serializer_class = VotoSerializer
+
+    def create(self, request, *args, **kwargs):
+        usuario = request.data.get("usuario")
+        votacion = request.data.get("votacion")
+        if Voto.objects.filter(usuario_id=usuario, votacion_id=votacion).exists():
+            return Response({"detail": "Ya votó esta votación"}, status=status.HTTP_400_BAD_REQUEST)
+        return super().create(request, *args, **kwargs)
+
+
+class VotoVotacionID(APIView):
+    def get(self, request, votacion):
+        try:
+            votos = Voto.objects.filter(votacion=votacion)
+            serializer = VotoSerializer(votos, many=True)
+            return Response(serializer.data)
+        except Voto.DoesNotExist:
+            return Response({"error": "No se encontraron votos para esta votación."}, status=404)
 

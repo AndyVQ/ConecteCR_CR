@@ -20,6 +20,7 @@ import PagNoticias from "../pages/PagNoticias";
 import PagForoAdmin from "../pages/PagForoAdmin";
 import PagAnAdmin from "../pages/PagAnAdmin";
 import PagAnuncios from "../pages/PagAnuncios";
+import PagVotaciones from "../pages/PagVotaciones";
 
 
 
@@ -49,6 +50,7 @@ function Routing() {
           <Route path="/VotModal" element={<PagVotModal />} />
           <Route path="/RepModal" element={<PagRepModal />} />
           <Route path="/PagPeti" element={<PagPeticiones />} />
+           <Route path="/PagVota" element={<PagVotaciones />} />
           <Route path="/PagReport" element={<PagReportes />} />
           <Route path="/PagNoticias" element={<PagNoticias />} />
           <Route path="/ForoAdmin" element={<PagForoAdmin />} />
