@@ -37,7 +37,7 @@ class PermisosPersonalizados(BasePermission):
 
 
 class ReportesCreateView(ListCreateAPIView):
-    permission_classes = [PermisosPersonalizados]
+    # permission_classes = [PermisosPersonalizados]
     queryset = Reportes.objects.all()
     serializer_class = ReportesSerializer
     

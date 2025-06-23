@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { getData, postData } from '../services/fetch';
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
 
 
 function AggPetModal({ abrirModal, cerrarModal }) {
@@ -29,6 +31,12 @@ function AggPetModal({ abrirModal, cerrarModal }) {
       usuario: 1,
     };
     await postData('intPeticiones/peticiones_create/', nuevaPeticion);
+    Swal.fire({
+          title: "Petición Enviada",
+          text: "Su petición está siendo revisada por un administrador.",
+          icon: "success",
+          confirmButtonText: "Listo",
+        });
   };
 
   return (
