@@ -3,9 +3,11 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { getData, postData } from "../services/fetch";
-import AlertaBootstrap from "./AlertaBootstrap";
 import Swal from "sweetalert2";
 import "sweetalert2/src/sweetalert2.scss";
+
+
+
 function AggRepModal({ abrirModal, cerrarModal }) {
   const [comunidades, setComunidades] = useState([]);
   const [comunidad, setComunidad] = useState("");
@@ -61,10 +63,10 @@ function AggRepModal({ abrirModal, cerrarModal }) {
     };
     await postData("intReportes/reportes_create/", nuevoReporte);
     Swal.fire({
-      title: "Éxito!",
-      text: "Reporte creado correctamente",
+      title: "Reporte Enviado",
+      text: "Su reporte está siendo revisado por un administrador.",
       icon: "success",
-      confirmButtonText: "Cool",
+      confirmButtonText: "Listo",
     });
   };
 

@@ -21,7 +21,7 @@ const Login = () => {
 
     if (respuesta.exito) {
       Swal.fire({
-        title: "¡Bienvenido!",
+        title: "¡Bienvenido a ConecteCR!",
         text: "Inicio de sesión exitoso",
         icon: "success",
         confirmButtonText: "Continuar",

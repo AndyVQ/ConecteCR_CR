@@ -1,7 +1,7 @@
 import { postData, postUser } from "../services/fetch";
 import "../styles/register.css";
 import { useState } from "react";
-import { Link, Navigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const FormularioRegister = () => {
@@ -13,6 +13,7 @@ const FormularioRegister = () => {
   const [userCedula, SetUserCedula] = useState("");
   const [userTel, SetUserTel] = useState("");
   const [reload, setReload] = useState(false);
+  const navigate = useNavigate();
 
   async function registerInfo() {
     if (
@@ -31,7 +32,7 @@ const FormularioRegister = () => {
       });
       return;
     }
-
+    
     if (userPass.length < 8) {
       Swal.fire({
         title: "La contraseña debe tener mas de 8 caracteres!",
@@ -51,13 +52,14 @@ const FormularioRegister = () => {
       telefono: userTel,
     };
     await postUser("usuarios/register/", users);
-
     Swal.fire({
       title: "Cuenta creada!",
       text: "Bienvenido a ConecteCR!",
       icon: "success",
       confirmButtonText: "Continuar",
 
+    }).then(() => {
+      navigate("/"); 
     }); 
     setReload(!reload);
   }
