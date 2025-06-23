@@ -1,54 +1,57 @@
-import React from 'react'
-import "../styles/AdminHome.css"
-import { postData, getData } from "../services/fetch";
-import { useState, useEffect } from "react";
-
+import React, { useState, useEffect } from 'react';
+import "../styles/AdminHome.css";
+import { getData } from "../services/fetch";
+import { Carousel } from 'react-bootstrap';
 
 function Admin() {
+  const [campaigns, setCampaigns] = useState(0);
+  const [petitions, setPetitions] = useState(0);
+  const [votes, setVotes] = useState(0);
+  const [reports, setReports] = useState([]);
+  const [photos, setPhotos] = useState([]);
+  const [search, setSearch] = useState("");
 
-const [campaigns, setCampaigns] = useState(0);
-const [petitions, setPetitions] = useState(0);
-const [votes, setVotes] = useState(0);
-const [reports, setReports] = useState([]);
-const [search, setSearch] = useState("")
-
-
-  useEffect(() => { 
-
+  useEffect(() => {
     async function fetchCampaings() {
       const campaingsGet = await getData("intCampanas/campanas_get/") || [];
-      setCampaigns(campaingsGet.length); 
+      setCampaigns(campaingsGet.length);
     }
-    fetchCampaings();
     async function fetchPetitions() {
       const petitionsGet = await getData("intPeticiones/peticiones_get/") || [];
-      setPetitions(petitionsGet.length); 
+      setPetitions(petitionsGet.length);
     }
-    fetchPetitions();
     async function fetchVotes() {
       const votesGet = await getData("intVotaciones/votaciones_get/") || [];
-      setVotes(votesGet.length); 
+      setVotes(votesGet.length);
     }
-    fetchVotes(); 
-
     async function fetchReports() {
       const reportsGet = await getData("intReportes/reportes_get/") || [];
-      setReports(reportsGet); 
+      setReports(reportsGet);
     }
-    fetchReports(); 
-    
-  }, []);  
+    async function fetchFotosCamp() {
+      const photosGet = await getData("intCampanas/campanas_get/") || [];
+      const urls = photosGet.map(p => p.imagen_campana);
+      setPhotos(urls);
+    }
 
-    const filtarReports = reports.filter(report =>
+    fetchCampaings();
+    fetchPetitions();
+    fetchVotes();
+    fetchReports();
+    fetchFotosCamp();
+  }, []);
+
+  const filtrarReports = reports.filter(report =>
     report.nombre_reporte.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
- <div className="admin-home">
+    <div className="admin-home">
+      {/* Panel de control */}
       <div className="admin-card">
         <div className="admin-card-header">
           <h3>Panel de control</h3>
-          <img src="\src\img\logo sin fondo.png" alt="Logo ConecteCR"/>
+          <img src="\src\img\logo sin fondo.png" alt="Logo ConecteCR" />
         </div>
         <div className="admin-card-body">
           <p>Campañas Activas <span className="admin-value">{campaigns}</span></p>
@@ -67,17 +70,21 @@ const [search, setSearch] = useState("")
         </div>
       </div>
 
+      {/* Reportes */}
       <div className="admin-card">
         <div className="admin-card-header">
           <h3>Reportes vecinales</h3>
-          <img src="\src\img\logo sin fondo.png" alt="Logo ConecteCR"/>
+          <img src="\src\img\logo sin fondo.png" alt="Logo ConecteCR" />
         </div>
         <div className="admin-card-body">
-          <input type="text" placeholder="Buscar reportes" className="admin-search" 
-          value={search}
-          onChange={e => setSearch(e.target.value)}
+          <input
+            type="text"
+            placeholder="Buscar reportes"
+            className="admin-search"
+            value={search}
+            onChange={e => setSearch(e.target.value)}
           />
-          {filtarReports.map((report, index) => (
+          {filtrarReports.map((report, index) => (
             <div key={index} className="admin-report">
               <p>{report.nombre_reporte}</p>
               <span>{new Date(report.fecha_reporte).toLocaleDateString()}</span>
@@ -86,29 +93,59 @@ const [search, setSearch] = useState("")
         </div>
       </div>
 
+      {/* Carousel de fotos */}
       <div className="admin-card">
         <div className="admin-card-header">
           <h3>Fotos Compartidas</h3>
-          <img src="\src\img\logo sin fondo.png" alt="Logo ConecteCR"/>
+          <img src="\src\img\logo sin fondo.png" alt="Logo ConecteCR" />
         </div>
         <div className="admin-card-body">
           <div className="admin-photo-carousel">
-            <button>{'<'}</button>
-          <img src="\src\img\logo sin fondo.png" alt="Logo ConecteCR"/>
-            <button>{'>'}</button>
+            <Carousel controls indicators={photos.length > 1} interval={null}>
+              {photos.length > 0 ? (
+                photos.map((url, idx) => (
+                  <Carousel.Item key={idx}>
+                    <img
+                      className="d-block w-100"
+                      src={url}
+                      alt={`Foto ${idx + 1}`}
+                      style={{ height: '180px', objectFit: 'cover', borderRadius: '8px' }}
+                    />
+                  </Carousel.Item>
+                ))
+              ) : (
+                <Carousel.Item>
+                  <div
+                    style={{
+                      height: '180px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      background: '#eee',
+                      borderRadius: '8px'
+                    }}
+                  >
+                    <p>Sin fotos disponibles</p>
+                  </div>
+                </Carousel.Item>
+              )}
+            </Carousel>
           </div>
         </div>
       </div>
+
+      {/* Estadísticas */}
       <div className="admin-card">
         <div className="admin-card-header">
           <h3>Estadísticas</h3>
-          <img src="\src\img\logo sin fondo.png" alt="Logo ConecteCR"/>
+          <img src="\src\img\logo sin fondo.png" alt="Logo ConecteCR" />
         </div>
         <div className="admin-card-body">
           <div className="admin-chart-placeholder">[Gráfico aquí]</div>
         </div>
       </div>
     </div>
-  );  
-};
-export default Admin
+  );
+}
+
+export default Admin;

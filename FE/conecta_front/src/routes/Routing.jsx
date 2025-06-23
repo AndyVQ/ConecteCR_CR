@@ -22,8 +22,6 @@ import PagAnAdmin from "../pages/PagAnAdmin";
 import PagAnuncios from "../pages/PagAnuncios";
 
 
-
-
 function Routing() {
   return (
     <div>
@@ -54,6 +52,7 @@ function Routing() {
           <Route path="/ForoAdmin" element={<PagForoAdmin />} />
           <Route path="/AnAdmin" element={<PagAnAdmin />} />
           <Route path="/PagAnunc" element={<PagAnuncios />} />
+          
         </Routes>
       </Router>
     </div>
