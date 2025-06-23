@@ -53,7 +53,7 @@ function CampAdmin() {
   }
 
   async function deleteProd(id) {
-    await deleteData("intCampanas/campanas_rud", id);
+    await deleteData("intCampanas/campanas_rud", id + "/");
     setReload(!reload);
   }
 

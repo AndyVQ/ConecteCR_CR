@@ -1,54 +1,68 @@
-import React from 'react'
+import React from "react";
 import "../styles/campAdmin.css";
 import { useState, useEffect } from "react";
 import { getData, deleteData } from "../services/fetch";
-import VotModal from './VotModal';
+import VotModal from "./VotModal";
 
 function VotAdmin() {
-    const [votes, setVotes] = useState([]);
-    const [search, setSearch] = useState("")
-    const [reload, setReload] = useState(false);
-    const [abrirModal, setAbrirModal] = useState(false);
-    const [infoVotacion, setInfoVotacion] = useState(null)
-  
-    useEffect(() => {
-      async function fetchPetitions() {
-        const votesGet = await getData("intVotaciones/votaciones_get/") || [];
-        setVotes(votesGet);
-      }
-      fetchPetitions();
-    }, []);
+  const [votes, setVotes] = useState([]);
+  const [search, setSearch] = useState("");
+  const [reload, setReload] = useState(false);
+  const [abrirModal, setAbrirModal] = useState(false);
+  const [infoVotacion, setInfoVotacion] = useState(null);
 
-  const filtarVotacion = votes.filter(vote =>
-  String(vote.nombre_votacion || "").toLowerCase().includes(search.toLowerCase()) ||
-  String(vote.usuario || "").toLowerCase().includes(search.toLowerCase()) ||
-  String(vote.comunidad || "").toLowerCase().includes(search.toLowerCase()) ||
-  String(vote.descripcion_votacion || "").toLowerCase().includes(search.toLowerCase()) ||
-  String(vote.fecha_votacion || "").toLowerCase().includes(search.toLowerCase())
-);
+  const filtarVotacion = votes.filter(
+    (vote) =>
+      String(vote.nombre_votacion || "")
+        .toLowerCase()
+        .includes(search.toLowerCase()) ||
+      String(vote.usuario || "")
+        .toLowerCase()
+        .includes(search.toLowerCase()) ||
+      String(vote.comunidad || "")
+        .toLowerCase()
+        .includes(search.toLowerCase()) ||
+      String(vote.descripcion_votacion || "")
+        .toLowerCase()
+        .includes(search.toLowerCase()) ||
+      String(vote.fecha_votacion || "")
+        .toLowerCase()
+        .includes(search.toLowerCase())
+  );
+  useEffect(() => {
+    async function fetchPetitions() {
+      const votesGet = (await getData("intVotaciones/votaciones_get/")) || [];
+      setVotes(votesGet);
+    }
+    fetchPetitions();
+  }, [filtarVotacion]);
 
-function abrirModalVotacion(votacion) {
-  setInfoVotacion(votacion);
-  setAbrirModal(true);
-}
+  function abrirModalVotacion(votacion) {
+    setInfoVotacion(votacion);
+    setAbrirModal(true);
+  }
 
-function cerrarModalVotacion() {
-  setInfoVotacion(null);
-  setAbrirModal(false);
-}
+  function cerrarModalVotacion() {
+    setInfoVotacion(null);
+    setAbrirModal(false);
+  }
 
-async function deleteProd(id) { 
-  await deleteData("intVotaciones/votaciones_rud", id);
-  setReload(!reload);
-}
-  
+  async function deleteProd(id) {
+    await deleteData("intVotaciones/votaciones_rud", id);
+    setReload(!reload);
+  }
+
   return (
-     <div className="dashboard-container">
+    <div className="dashboard-container">
       <div className="main-content">
         <h2>Votaciones</h2>
-        <input type="text" placeholder="Buscar Votaciones" className="admin-search-1"
-        value={search}
-        onChange={e => setSearch(e.target.value)}/>
+        <input
+          type="text"
+          placeholder="Buscar Votaciones"
+          className="admin-search-1"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
         <table>
           <thead>
             <tr>
@@ -69,18 +83,24 @@ async function deleteProd(id) {
                 <td>{votacion.descripcion_votacion}</td>
                 <td>{votacion.fecha_votacion}</td>
                 <td>
-                  <button onClick={() => abrirModalVotacion(votacion)}>✏️</button>
+                  <button onClick={() => abrirModalVotacion(votacion)}>
+                    ✏️
+                  </button>
                   <button onClick={() => deleteProd(votacion.id)}>🗑️</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        {abrirModal && 
-        <VotModal abrirModal={abrirModal} cerrarModal={cerrarModalVotacion} votaciones={infoVotacion}/>
-        }
+        {abrirModal && (
+          <VotModal
+            abrirModal={abrirModal}
+            cerrarModal={cerrarModalVotacion}
+            votaciones={infoVotacion}
+          />
+        )}
       </div>
     </div>
   );
-};
-export default VotAdmin
+}
+export default VotAdmin;

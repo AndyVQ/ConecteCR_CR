@@ -36,7 +36,7 @@ function CampModal({ abrirModal, cerrarModal, campanas }) {
       setComunidades(comunidadesGet);
     }
     fetchComunidades();
-  }, [campaigns]);
+  }, []);
 
   async function editProd(id) {
     let editInfo = {
@@ -46,7 +46,7 @@ function CampModal({ abrirModal, cerrarModal, campanas }) {
       direccion_campana: direccionCampanaEditar,
       imagen_campana: imagenCampanaEditar,
     };
-    await updateData(editInfo, "intCampanas/campanas_rud", id);
+    await updateData(editInfo, "intCampanas/campanas_rud", id + "/");
   }
 
   return (
