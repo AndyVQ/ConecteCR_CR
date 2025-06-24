@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from .models import Perfil
 from .serializers import PerfilSerializer
 from rest_framework_simplejwt.tokens import RefreshToken,AccessToken
+from rest_framework.generics import ListAPIView
 
 class ValidarUsuarioView(APIView):
     def post(self, request):
@@ -67,4 +68,6 @@ class CreateUserView(APIView):
         )
         return Response({"mensaje": "Usuario creado exitosamente"}, status=status.HTTP_201_CREATED)
     
-    
+class UsuariosListApiView(ListAPIView):
+    queryset = Perfil.objects.all()
+    serializer_class = PerfilSerializer

@@ -4,8 +4,6 @@ import { getData } from "../services/fetch";
 import { Carousel } from 'react-bootstrap';
 import Chart from "react-apexcharts";
 
-
-
 function Admin() {
   const [campaigns, setCampaigns] = useState(0);
   const [petitions, setPetitions] = useState(0);
@@ -13,12 +11,22 @@ function Admin() {
   const [reports, setReports] = useState([]);
   const [photos, setPhotos] = useState([]);
   const [search, setSearch] = useState("");
+  const [users, setUsers] = useState(0);
+  const [comunidades, setComunidades] = useState(0);
+  const [comunidadesNames, setComunidadesNames] = useState([]);
 
   useEffect(() => {
+
+    async function fetchUsers() {
+      const usersGet = await getData("usuarios/usuarios_get/") || [];
+      setUsers(usersGet.length);
+    }
+
     async function fetchCampaings() {
       const campaingsGet = await getData("intCampanas/campanas_get/") || [];
       setCampaigns(campaingsGet.length);
     }
+    
     async function fetchPetitions() {
       const petitionsGet = await getData("intPeticiones/peticiones_get/") || [];
       setPetitions(petitionsGet.length);
@@ -36,32 +44,43 @@ function Admin() {
       const urls = photosGet.map(p => p.imagen_campana);
       setPhotos(urls);
     }
-
+      async function fetchComunidades() {
+      const comunidadesGet = await getData("comunidades/comunidades_get/") || [];
+      setComunidades(comunidadesGet);
+    }
+    async function fetchComunidadesName() {
+      const NameGet = await getData("comunidades/comunidades_get/") || [];
+      const names = NameGet.map(p => p.nombre_comunidad);
+      setComunidadesNames(names);
+    }
+    
     fetchCampaings();
     fetchPetitions();
     fetchVotes();
     fetchReports();
     fetchFotosCamp();
+    fetchUsers()
+    fetchComunidades();
+    fetchComunidadesName()
   }, []);
 
   const filtrarReports = reports.filter(report =>
     report.nombre_reporte.toLowerCase().includes(search.toLowerCase())
   );
 
-const chartOptions = {
-  chart: { id: "basic-bar" },
-  xaxis: {
-    categories: ["Campañas", "Peticiones", "Votaciones"]
-  }
-};
+  const chartOptions = {
+    chart: { id: "basic-bar" },
+    xaxis: {
+      categories: ["Campañas", "Peticiones", "Votaciones"]
+    }
+  };
 
-const chartSeries = [
-  {
-    name: "Cantidad",
-    data: [campaigns, petitions, votes]
-  }
-];
-
+  const chartSeries = [
+    {
+      name: "Cantidad",
+      data: [campaigns, petitions, votes]
+    }
+  ];
 
   return (
     <div className="admin-home">
@@ -133,8 +152,7 @@ const chartSeries = [
                   ))
                 ) : (
                   <Carousel.Item>
-                    <div
-                    >
+                    <div>
                       <p>Sin fotos disponibles</p>
                     </div>
                   </Carousel.Item>
@@ -145,20 +163,44 @@ const chartSeries = [
         </div>
       </div>
 
-      {/* Estadísticas */}
-      <div className="admin-card admin-stats-card">
-        <div className="admin-card-header">
-          <h3>Estadísticas</h3>
-          <img src="\src\img\logo sin fondo.png" alt="Logo ConecteCR" />
+      {/* Estadísticas: Dos gráficos */}
+      <div className="admin-stats-wrapper">
+        <div className="admin-card admin-stats-card">
+          <div className="admin-card-header">
+            <h3>Estadísticas</h3>
+            <img src="\src\img\logo sin fondo.png" alt="Logo ConecteCR" />
+          </div>
+          <div className="admin-card-body">
+            <p className="admin-users-info">
+              Total de Usuarios Registrados: <span className="admin-value">{users}</span>
+            </p>
+            <p className="admin-users-info">
+              Total de Comunidades Registradas: <span className="admin-value">{comunidades.length}</span>
+            </p>
+            <p className="admin-users-info">
+              Comunidades Registradas: <span className="admin-value">{comunidadesNames.join(", ")}</span>
+            </p>
+          </div>
         </div>
-        <div className="admin-card-body">
-          <Chart
-            options={chartOptions}
-            series={chartSeries}
-            type="bar"
-            width="100%"
-            height="300"
-          />
+
+        {/* Gráfico 2 */}
+        <div className="admin-card admin-stats-card">
+          <div className="admin-card-header">
+            <h3>Estadísticas Comparativas</h3>
+            <img src="\src\img\logo sin fondo.png" alt="Logo ConecteCR" />
+          </div>
+          <div className="admin-card-body">
+            <Chart
+              options={{
+                chart: { type: "pie" },
+                labels: ["Campañas", "Peticiones", "Votaciones"]
+              }}
+              series={[campaigns, petitions, votes]}
+              type="pie"
+              width="100%"
+              height="300"
+            />
+          </div>
         </div>
       </div>
     </div>
