@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import "../styles/AdminHome.css";
 import { getData } from "../services/fetch";
 import { Carousel } from 'react-bootstrap';
+import Chart from "react-apexcharts";
+
+
 
 function Admin() {
   const [campaigns, setCampaigns] = useState(0);
@@ -45,103 +48,117 @@ function Admin() {
     report.nombre_reporte.toLowerCase().includes(search.toLowerCase())
   );
 
+const chartOptions = {
+  chart: { id: "basic-bar" },
+  xaxis: {
+    categories: ["Campañas", "Peticiones", "Votaciones"]
+  }
+};
+
+const chartSeries = [
+  {
+    name: "Cantidad",
+    data: [campaigns, petitions, votes]
+  }
+];
+
+
   return (
     <div className="admin-home">
-      {/* Panel de control */}
-      <div className="admin-card">
-        <div className="admin-card-header">
-          <h3>Panel de control</h3>
-          <img src="\src\img\logo sin fondo.png" alt="Logo ConecteCR" />
-        </div>
-        <div className="admin-card-body">
-          <p>Campañas Activas <span className="admin-value">{campaigns}</span></p>
-          <p>Peticiones Realizadas <span className="admin-value">{petitions}</span></p>
-          <p>Votaciones Activas <span className="admin-value">{votes}</span></p>
-          <hr />
-          <h4>Campañas</h4>
-          <div className="admin-campaign-status">
-            <p>Iluminación</p>
-            <div className="admin-bar admin-finalized"><span>Finalizada</span></div>
+      <div className="admin-top-cards">
+        {/* Panel de control */}
+        <div className="admin-card">
+          <div className="admin-card-header">
+            <h3>Panel de control</h3>
+            <img src="\src\img\logo sin fondo.png" alt="Logo ConecteCR" />
           </div>
-          <div className="admin-campaign-status">
-            <p>Mejoras al parque</p>
-            <div className="admin-bar admin-active"><span>Activa</span></div>
-          </div>
-        </div>
-      </div>
-
-      {/* Reportes */}
-      <div className="admin-card">
-        <div className="admin-card-header">
-          <h3>Reportes vecinales</h3>
-          <img src="\src\img\logo sin fondo.png" alt="Logo ConecteCR" />
-        </div>
-        <div className="admin-card-body">
-          <input
-            type="text"
-            placeholder="Buscar reportes"
-            className="admin-search"
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-          />
-          {filtrarReports.map((report, index) => (
-            <div key={index} className="admin-report">
-              <p>{report.nombre_reporte}</p>
-              <span>{new Date(report.fecha_reporte).toLocaleDateString()}</span>
+          <div className="admin-card-body">
+            <p>Campañas Activas <span className="admin-value">{campaigns}</span></p>
+            <p>Peticiones Realizadas <span className="admin-value">{petitions}</span></p>
+            <p>Votaciones Activas <span className="admin-value">{votes}</span></p>
+            <hr />
+            <h4>Campañas</h4>
+            <div className="admin-campaign-status">
+              <p>Iluminación</p>
+              <div className="admin-bar admin-finalized"><span>Finalizada</span></div>
             </div>
-          ))}
+            <div className="admin-campaign-status">
+              <p>Mejoras al parque</p>
+              <div className="admin-bar admin-active"><span>Activa</span></div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      {/* Carousel de fotos */}
-      <div className="admin-card">
-        <div className="admin-card-header">
-          <h3>Fotos Compartidas</h3>
-          <img src="\src\img\logo sin fondo.png" alt="Logo ConecteCR" />
+        {/* Reportes */}
+        <div className="admin-card">
+          <div className="admin-card-header">
+            <h3>Reportes vecinales</h3>
+            <img src="\src\img\logo sin fondo.png" alt="Logo ConecteCR" />
+          </div>
+          <div className="admin-card-body">
+            <input
+              type="text"
+              placeholder="Buscar reportes"
+              className="admin-search"
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+            />
+            {filtrarReports.map((report, index) => (
+              <div key={index} className="admin-report">
+                <p>{report.nombre_reporte}</p>
+                <span>{new Date(report.fecha_reporte).toLocaleDateString()}</span>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="admin-card-body">
-          <div className="admin-photo-carousel">
-            <Carousel controls indicators={photos.length > 1} interval={null}>
-              {photos.length > 0 ? (
-                photos.map((url, idx) => (
-                  <Carousel.Item key={idx}>
-                    <img
-                      className="d-block w-100"
-                      src={url}
-                      alt={`Foto ${idx + 1}`}
-                      style={{ height: '180px', objectFit: 'cover', borderRadius: '8px' }}
-                    />
+
+        {/* Carousel de fotos */}
+        <div className="admin-card admin-carousel-card">
+          <div className="admin-card-header">
+            <h3>Fotos Compartidas</h3>
+            <img src="\src\img\logo sin fondo.png" alt="Logo ConecteCR" />
+          </div>
+          <div className="admin-card-body">
+            <div className="admin-photo-carousel">
+              <Carousel controls indicators={photos.length > 1} interval={null}>
+                {photos.length > 0 ? (
+                  photos.map((url, idx) => (
+                    <Carousel.Item key={idx}>
+                      <img
+                        className="d-block"
+                        src={url}
+                        alt={`Foto ${idx + 1}`}
+                      />
+                    </Carousel.Item>
+                  ))
+                ) : (
+                  <Carousel.Item>
+                    <div
+                    >
+                      <p>Sin fotos disponibles</p>
+                    </div>
                   </Carousel.Item>
-                ))
-              ) : (
-                <Carousel.Item>
-                  <div
-                    style={{
-                      height: '180px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      background: '#eee',
-                      borderRadius: '8px'
-                    }}
-                  >
-                    <p>Sin fotos disponibles</p>
-                  </div>
-                </Carousel.Item>
-              )}
-            </Carousel>
+                )}
+              </Carousel>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Estadísticas */}
-      <div className="admin-card">
+      <div className="admin-card admin-stats-card">
         <div className="admin-card-header">
           <h3>Estadísticas</h3>
           <img src="\src\img\logo sin fondo.png" alt="Logo ConecteCR" />
         </div>
         <div className="admin-card-body">
-          <div className="admin-chart-placeholder">[Gráfico aquí]</div>
+          <Chart
+            options={chartOptions}
+            series={chartSeries}
+            type="bar"
+            width="100%"
+            height="300"
+          />
         </div>
       </div>
     </div>
