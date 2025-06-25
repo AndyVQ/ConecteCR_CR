@@ -10,22 +10,22 @@ function RepAdmin() {
     const [reload, setReload] = useState(false);
     const [abrirModal, setAbrirModal] = useState(false);
     const [infoReporte, setInfoReporte] = useState(null)
-  
+    
+    const filtarReporte = reports.filter(reports =>
+    String(reports.nombre_reporte || "").toLowerCase().includes(search.toLowerCase()) ||
+    String(reports.usuario || "").toLowerCase().includes(search.toLowerCase()) ||
+    String(reports.comunidad || "").toLowerCase().includes(search.toLowerCase()) ||
+    String(reports.descripcion_reporte || "").toLowerCase().includes(search.toLowerCase()) ||
+    String(reports.fecha_reporte || "").toLowerCase().includes(search.toLowerCase())
+  );
     useEffect(() => {
       async function fetchReports() {
         const reportsGet = await getData("intReportes/reportes_get/") || [];
         setReports(reportsGet);
       }
       fetchReports();
-    }, []);
+    }, [filtarReporte]);
 
-  const filtarReporte = reports.filter(reports =>
-  String(reports.nombre_reporte || "").toLowerCase().includes(search.toLowerCase()) ||
-  String(reports.usuario || "").toLowerCase().includes(search.toLowerCase()) ||
-  String(reports.comunidad || "").toLowerCase().includes(search.toLowerCase()) ||
-  String(reports.descripcion_reporte || "").toLowerCase().includes(search.toLowerCase()) ||
-  String(reports.fecha_reporte || "").toLowerCase().includes(search.toLowerCase())
-);
 
 function abrirModalReporte(reporte) {
   setInfoReporte(reporte);
