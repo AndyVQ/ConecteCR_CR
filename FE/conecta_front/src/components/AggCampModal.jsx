@@ -52,7 +52,7 @@ function AggCampModal({ abrirModal, cerrarModal }) {
       descripcion_campana: descripcion,
       direccion_campana: direccion,
       fecha_campana: fecha,
-      usuario: 1,
+      usuario: localStorage.getItem("id_usuario"),
       imagen_campana: urlImagen,
     };
     await postData("intCampanas/campanas/", nuevaCampana);

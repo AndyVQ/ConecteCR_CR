@@ -85,7 +85,6 @@ function Admin() {
   return (
     <div className="admin-home">
       <div className="admin-top-cards">
-        {/* Panel de control */}
         <div className="admin-card">
           <div className="admin-card-header">
             <h3>Panel de control</h3>

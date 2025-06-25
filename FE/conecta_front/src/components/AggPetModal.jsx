@@ -28,7 +28,7 @@ function AggPetModal({ abrirModal, cerrarModal }) {
       nombre_peticion: nombre,
       descripcion_peticion: descripcion,
       fecha_peticion: fecha,
-      usuario: 1,
+      usuario: localStorage.getItem("id_usuario"),
     };
     await postData('intPeticiones/peticiones_create/', nuevaPeticion);
     Swal.fire({

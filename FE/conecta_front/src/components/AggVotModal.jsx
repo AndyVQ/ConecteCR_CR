@@ -26,7 +26,7 @@ function AggVotModal({ abrirModal, cerrarModal, reload, setReload }) {
       descripcion_votacion: descripcion,
       fecha_votacion: fecha,
       imagen_votacion: "abc",
-      usuario: 1,
+      usuario: localStorage.getItem("id_usuario"),
     };
     await postData("intVotaciones/votaciones/", nuevaVotacion);
     setReload(!reload);

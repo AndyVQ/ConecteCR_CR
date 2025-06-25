@@ -58,7 +58,7 @@ function AggRepModal({ abrirModal, cerrarModal }) {
       fecha_reporte: fecha,
       direccion_reportes: direccion,
       gravedad_reporte: gravedad,
-      usuario: 1,
+      usuario: localStorage.getItem("id_usuario"),
       imagen_reporte: urlImagen,
     };
     await postData("intReportes/reportes_create/", nuevoReporte);

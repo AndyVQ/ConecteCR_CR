@@ -1,8 +1,7 @@
 .admin-home {
   display: block;
   padding: 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f0fdf4;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Top cards */
@@ -200,13 +199,8 @@ hr {
   }
 
   .admin-photo-carousel img {
-    height: auto;
+    height: 200px;
   }
-}
-
-body {
-  overflow-x: hidden;
-  background-color: #f0fdf4;
 }
 
 .admin-users-info {
