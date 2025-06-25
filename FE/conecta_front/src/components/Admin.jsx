@@ -131,6 +131,12 @@ function Admin() {
             <img src="\src\img\logo sin fondo.png" alt="Logo ConecteCR" />
           </div>
           <div className="admin-card-body">
+            {filtrarReports.map((report, index) => (
+              <div key={index} className="admin-report">
+                <p>{report.nombre_reporte}</p>
+                <span>{new Date(report.fecha_reporte).toLocaleDateString()}</span>
+              </div>
+            ))}
             <input
               type="text"
               placeholder="Buscar reportes"
@@ -138,12 +144,6 @@ function Admin() {
               value={search}
               onChange={e => setSearch(e.target.value)}
             />
-            {filtrarReports.map((report, index) => (
-              <div key={index} className="admin-report">
-                <p>{report.nombre_reporte}</p>
-                <span>{new Date(report.fecha_reporte).toLocaleDateString()}</span>
-              </div>
-            ))}
           </div>
         </div>
 
