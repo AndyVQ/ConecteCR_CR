@@ -9,8 +9,7 @@ function VotModal({ abrirModal, cerrarModal, votaciones }) {
   const [votes, setVotes] = useState([]);
   const [comunidades, setComunidades] = useState([]);
   const [nombreVotacionEditar, setNombreVotacionEditar] = useState("");
-  const [descripcionVotacionEditar, setDescripcionVotacionEditar] =
-    useState("");
+  const [descripcionVotacionEditar, setDescripcionVotacionEditar] = useState("");
   const [imagenVotacionEditar, setImagenVotacionEditar] = useState("");
   const [comunidadVotacionEditar, setComunidadVotacionEditar] = useState("");
 
