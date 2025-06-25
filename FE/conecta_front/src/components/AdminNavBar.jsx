@@ -13,6 +13,9 @@ const AdminNavBar = () => {
             <a href="/Admin">Inicio</a>
           </li>
           <li>
+            <a href="/ComAdmin">Comunidades</a>
+          </li>
+          <li> 
             <a href="/CampAdmin">Campañas</a>
           </li>
           <li>
