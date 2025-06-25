@@ -1,82 +1,66 @@
 .card-campana {
-  background: linear-gradient(145deg, #bfe1c0, #e1f5e7);
-  border-radius: 16px;
-  padding: 1rem;
-  margin: 1rem;     
-  width: 100%;
-  max-width: 400px;
+  background-color: #b1e8bd91;
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.08);
+  padding: 20px;
+  width: 230px;
+  height: 100%;
+  min-height: 420px; 
+  max-height: 420px; 
+  margin: 30px 4px;
+  margin-left: 17px;
+  font-family: 'Segoe UI', sans-serif;
   display: flex;
   flex-direction: column;
+  justify-content: space-between; 
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-  color: #2e7d32;
-  font-size: 1rem;
-  line-height: 1.5;
-  box-sizing: border-box;     
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card-campana:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(120, 190, 140, 0.3);
-}
-
-.titulo-campana {
-  color: #2e7d32;
-  font-weight: 600;
- 
-}
-
-.descripcion-campana {
-  color: #4b8b4a;
-  line-height: 1.5;
-}
-
-.direccion-campana,
-.fecha-campana,
-.comunidad-campana {
-  color: #5d9c6b;
-  font-size: 0.9rem;
-  margin-top: 0.25rem;
 }
 
 .cont-apoyos {
-  background-color: #d4edda;
-  color: #1b5e20;
+  width: 15%;
   border: none;
+  background-color: #f5f7fa;
+  padding: 6px;
+  border-radius: 40px;
   font-weight: bold;
-  width: 60px;
   text-align: center;
-  border-radius: 30px;
-  margin-bottom: 1rem;
-  padding: 0.25rem 0.5rem;
-  animation: fade-in 1s ease-in-out;
+  height: 30px;
+  text-decoration: none;
+  color: #617e61;
+  
+}
+
+.titulo-campana {
+  font-size: 20px;
+  font-weight: 700;
+  color: #617e61;
+  margin: 0;
+}
+
+.descripcion-campana,
+.direccion-campana,
+.fecha-campana,
+.comunidad-campana {
+  font-size: 13px;
+  color: #000000;
+  margin: -5px;
+  text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+  
+}
+
+.imagen-campana {
+  width: 105%;
+  border-radius: 8px;
+  max-height: 105px;
+  object-fit: cover;
 }
 
 .apoyar-btn {
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  background-color: #81c784 !important;
-  border: none;
+  margin-top: 10px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 600;
 }
 
-.apoyar-btn:hover {
-  background-color: #66bb6a !important;
-  transform: scale(1.05);
-}
 
-.apoyar-btn.clicked {
-  background-color: #a5d6a7 !important;
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}

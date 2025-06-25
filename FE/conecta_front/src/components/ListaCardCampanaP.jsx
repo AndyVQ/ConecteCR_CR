@@ -61,6 +61,7 @@ const ListaCardCampanaP = () => {
             cantApoyos={apoyos[Camp.id] || 0}
             onApoyar={() => apoyarCampana(Camp.id)}
             disabled={yaVote[Camp.id]}
+            imagenUrl={Camp.imagen_campana}
           />
         );
       })}

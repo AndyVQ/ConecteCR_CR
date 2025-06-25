@@ -39,7 +39,7 @@ function AggNotModal({ abrirModal, cerrarModal }) {
       descripcion_noticia: descripcion,
       fecha_noticia: fecha,
       titular_notica: nombre,
-      usuario: 1,
+      usuario: localStorage.getItem("id_usuario"),
       imagen_noticia: urlImagen,
     };
     await postData("intNoticias/noticia_create/", nuevaNoticia);
