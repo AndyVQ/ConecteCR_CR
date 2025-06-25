@@ -5,7 +5,6 @@ import AggPetModal from "../components/AggPetModal";
 import { useState } from "react";
 import "../styles/PagCampAdmin.css";
 
-
 const PagPeticiones = () => {
   const [abrirModal, setAbrirModal] = useState(false);
 

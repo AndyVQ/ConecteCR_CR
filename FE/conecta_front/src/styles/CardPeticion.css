@@ -1,38 +1,56 @@
 .card-peticion {
-  background: #4ace5c;
-  border-radius: 12px;
-  padding: 1.5rem 1.75rem;
-  max-width: 380px;
-  margin: 1.5rem auto;
-  color: #ffffff;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  background-color: #b4e3c3a6; /* Verde muy claro */
+  color: #ffffff; /* Texto blanco para contraste */
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 10px; /* Espacio interno */
+  margin: 10px; /* Espacio entre cards */
+ 
+  flex-direction: column; /* Coloca los elementos en columna */
+  justify-content: center; /* Centra los elementos verticalmente */
+
+  
+
 }
 
 .card-peticion:hover {
-  background: #b1efb6;
-  transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 100, 50, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background-color: #a0d8b0; /* Cambia a un verde más oscuro al pasar el mouse */
+  color: #ffffff; /* Mantiene el texto blanco */  
+  
 }
 
 .titulo-peticion {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #ffffff;
-  text-align: center;
-  margin-bottom: 1rem;
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 10px;  
+  
+  color: #2e7d32; /* Verde más fuerte */
+  font-family: "Segoe UI", sans-serif;
+  text-transform: uppercase; /* Hace el texto en mayúsculas */
+  
 }
 
-.descripcion-peticion,
+.descripcion-peticion {
+  font-size: 17px;
+  color: #506456;
+  margin-bottom: 120px;
+  flex-grow: 1;
+  text-align: center;
+  line-height: 1.5; /* Mejora la legibilidad */
+  font-weight: 500;
+  text-align: center;
+  margin-top: 100px;
+}
+
 .comunidad-peticion,
 .fecha-peticion {
-  margin-bottom: 0.4rem;
-  font-size: 1.1rem;
-  line-height: 1.4;
-  color: #e0f2f1;
+  font-size: 13px;
+  color: #3d6643;
+  margin: 2px 0;
+  font-style: italic;
+  text-align: right;
+  font-style: italic;
+  font-weight: 600;
 }
-
-.fecha-peticion {
-  font-weight: 700;
-}
-

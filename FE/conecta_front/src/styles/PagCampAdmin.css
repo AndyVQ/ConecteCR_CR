@@ -1,7 +1,38 @@
 .btn-agg-camps {
   position: relative;
-  left: 85%;
+  left: 1%;
   background: transparent;
   border: none;
   font-size: 20px;
 }
+
+.btn-agg-camps {
+  background-color: #8dd88d99;
+  color: #4e5358;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 20px auto;
+  display: block;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-agg-camps:hover {
+  background-color: #75967a9e;
+  color: aliceblue;
+  transform: translateY(-2px);
+}
+
+.btn-agg-camps:active {
+  transform: scale(0.97);
+}
+
+.btn-agg-camps:focus {
+  outline: 2px solid #84c4f5;
+  outline-offset: 2px;
+}
+
