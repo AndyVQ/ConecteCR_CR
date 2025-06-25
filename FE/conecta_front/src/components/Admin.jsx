@@ -14,19 +14,33 @@ function Admin() {
   const [users, setUsers] = useState(0);
   const [comunidades, setComunidades] = useState(0);
   const [comunidadesNames, setComunidadesNames] = useState([]);
+  const [reportsCount, setReportsCount] = useState(0);
+  const [news, setNews] = useState(0);
+  const [forum, setForum] = useState(0);
+  const [announcements, setAnnouncements] = useState(0);
 
+ 
   useEffect(() => {
-
     async function fetchUsers() {
       const usersGet = await getData("usuarios/usuarios_get/") || [];
       setUsers(usersGet.length);
     }
-
     async function fetchCampaings() {
       const campaingsGet = await getData("intCampanas/campanas_get/") || [];
       setCampaigns(campaingsGet.length);
     }
-    
+    async function fetchNews() {
+      const newsGet = await getData("intNoticias/noticia_get/") || [];
+      setNews(newsGet.length);
+    }
+    async function fetchForum() {
+      const forumGet = await getData("intForo/foro_get/") || [];
+      setForum(forumGet.length);
+    }
+    async function fetchAnnouncements() {
+      const announcementsGet = await getData("intAnuncio/anuncio_get/") || [];
+      setAnnouncements(announcementsGet.length);
+    }
     async function fetchPetitions() {
       const petitionsGet = await getData("intPeticiones/peticiones_get/") || [];
       setPetitions(petitionsGet.length);
@@ -34,6 +48,10 @@ function Admin() {
     async function fetchVotes() {
       const votesGet = await getData("intVotaciones/votaciones_get/") || [];
       setVotes(votesGet.length);
+    }
+    async function fetchReportsCount() {
+      const reportsCountGet = await getData("intReportes/reportes_get/") || [];
+      setReportsCount(reportsCountGet.length);
     }
     async function fetchReports() {
       const reportsGet = await getData("intReportes/reportes_get/") || [];
@@ -59,9 +77,13 @@ function Admin() {
     fetchVotes();
     fetchReports();
     fetchFotosCamp();
-    fetchUsers()
+    fetchUsers();
     fetchComunidades();
-    fetchComunidadesName()
+    fetchComunidadesName();
+    fetchReportsCount();
+    fetchNews();
+    fetchForum();
+    fetchAnnouncements();
   }, []);
 
   const filtrarReports = reports.filter(report =>
@@ -92,19 +114,13 @@ function Admin() {
             <img src="\src\img\logo sin fondo.png" alt="Logo ConecteCR" />
           </div>
           <div className="admin-card-body">
-            <p>Campañas Activas <span className="admin-value">{campaigns}</span></p>
-            <p>Peticiones Realizadas <span className="admin-value">{petitions}</span></p>
-            <p>Votaciones Activas <span className="admin-value">{votes}</span></p>
-            <hr />
-            <h4>Campañas</h4>
-            <div className="admin-campaign-status">
-              <p>Iluminación</p>
-              <div className="admin-bar admin-finalized"><span>Finalizada</span></div>
-            </div>
-            <div className="admin-campaign-status">
-              <p>Mejoras al parque</p>
-              <div className="admin-bar admin-active"><span>Activa</span></div>
-            </div>
+            <p className="admin-users-info1">Campañas Activas <span className="admin-value">{campaigns}</span></p>
+            <p className="admin-users-info1">Peticiones Realizadas <span className="admin-value">{petitions}</span></p>
+            <p className="admin-users-info1">Votaciones Activas <span className="admin-value">{votes}</span></p>
+            <p className="admin-users-info1">Reportes realizados <span className="admin-value">{reportsCount}</span></p>
+            <p className="admin-users-info1">Noticias publicadas <span className="admin-value">{news}</span></p>
+            <p className="admin-users-info1">Foros activos <span className="admin-value">{forum}</span></p>
+            <p className="admin-users-info1">Anuncios publicados <span className="admin-value">{announcements}</span></p>
           </div>
         </div>
 
