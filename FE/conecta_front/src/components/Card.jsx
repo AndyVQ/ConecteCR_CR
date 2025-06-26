@@ -18,7 +18,7 @@ const cardsData = [
     title: 'Foros de Discusión',
     description: 'Participa en debates y comparte tus opiniones sobre temas locales.',
     buttonText: 'Unirse al Foro',
-    redirectTo: '' // No tendrá redirección
+    redirectTo: '/PagForo' 
   }
 ];
 
