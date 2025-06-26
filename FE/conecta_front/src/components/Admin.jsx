@@ -90,20 +90,6 @@ function Admin() {
     report.nombre_reporte.toLowerCase().includes(search.toLowerCase())
   );
 
-  const chartOptions = {
-    chart: { id: "basic-bar" },
-    xaxis: {
-      categories: ["Campañas", "Peticiones", "Votaciones"]
-    }
-  };
-
-  const chartSeries = [
-    {
-      name: "Cantidad",
-      data: [campaigns, petitions, votes]
-    }
-  ];
-
   return (
     <div className="admin-home">
       <div className="admin-top-cards">
