@@ -1,10 +1,8 @@
 import Navbar from "../components/NavBar";
 import FooterHighFashion from "../components/Footer";
 import AggForoModal from "../components/AggForoModal";
-import CardForo from "../components/CardForo"; 
+import CardForo from "../components/CardForo";
 import { useState } from "react";
-
-
 
 const PagForo = () => {
   const [abrirModal, setAbrirModal] = useState(false);

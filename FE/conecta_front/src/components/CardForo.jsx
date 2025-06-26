@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getData } from "../services/fetch";
 
 const CardForo = () => {
   const [foros, setForos] = useState([]);
+  const navigate = useNavigate();
 
- useEffect(() => {
+  useEffect(() => {
     async function traerForos() {
       const peticion = await getData("intForo/foro_create/");
       setForos(peticion);
@@ -13,10 +15,15 @@ const CardForo = () => {
     traerForos();
   }, []);
 
+  function enviarForoDetalle(id) {
+    localStorage.setItem("foroId",id)
+    navigate(`/ForoDetalle/${id}`);
+  }
+
   return (
     <div className="foro-container">
       {foros.map((foro) => (
-        <div className="foro" key={foro.id_foro}>
+        <div className="foro" key={foro.id}>
           <h2>{foro.nombre_foro}</h2>
           <p>{foro.descripcion_foro}</p>
           <p>Fecha: {new Date(foro.fecha_foro).toLocaleDateString()}</p>
@@ -29,7 +36,8 @@ const CardForo = () => {
             />
           )}
           <p>Likes: {foro.likes_foro}</p>
-          <button>Ver más</button>
+
+          <button onClick={() => enviarForoDetalle(foro.id)}>Ver más</button>
         </div>
       ))}
     </div>

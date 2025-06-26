@@ -13,6 +13,7 @@ async function postData(endpoint, data) {
   } catch (error) {
     console.log(error);
   }
+  
 }
 
 async function postUser(endpoint, data) {

@@ -24,6 +24,7 @@ import PagVotaciones from "../pages/PagVotaciones";
 import PagComAdmin from "../pages/PagComAdmin";
 import PagComModal from "../pages/PagComModal";
 import PagForo from "../pages/PagForo";
+import PagForoDetalle from "../pages/PagForoDetalle";
 
 function Routing() {
   return (
@@ -49,18 +50,17 @@ function Routing() {
           <Route path="/PetModal" element={<PagPetModal />} />
           <Route path="/VotModal" element={<PagVotModal />} />
           <Route path="/RepModal" element={<PagRepModal />} />
-          <Route path="/ComModal" element={< PagComModal/>} />
+          <Route path="/ComModal" element={<PagComModal />} />
           <Route path="/PagPeti" element={<PagPeticiones />} />
-           <Route path="/PagVota" element={<PagVotaciones />} />
+          <Route path="/PagVota" element={<PagVotaciones />} />
           <Route path="/PagReport" element={<PagReportes />} />
           <Route path="/PagNoticias" element={<PagNoticias />} />
-           <Route path="/PagForo" element={<PagForo />} />
+          <Route path="/PagForo" element={<PagForo />} />
           <Route path="/ForoAdmin" element={<PagForoAdmin />} />
           <Route path="/AnAdmin" element={<PagAnAdmin />} />
           <Route path="/PagAnunc" element={<PagAnuncios />} />
           <Route path="/ComAdmin" element={<PagComAdmin />} />
-          <Route path="/PagForo" element={<PagForo />} />
-          
+          <Route path="/ForoDetalle/:id" element={<PagForoDetalle />} />
         </Routes>
       </Router>
     </div>
