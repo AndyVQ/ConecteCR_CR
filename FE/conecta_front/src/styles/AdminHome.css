@@ -3,8 +3,6 @@
   padding: 20px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-
-/* Top cards */
 .admin-top-cards {
   display: flex;
   flex-wrap: wrap;
@@ -13,8 +11,6 @@
   max-width: 1024px;
   margin: 0 auto 20px;
 }
-
-/* Card base */
 .admin-card {
   background-color: #e6f4ea;
   border-radius: 16px;
@@ -36,8 +32,6 @@
 .admin-carousel-card {
   width: 340px;
 }
-
-/* Stats section */
 .admin-stats-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -54,8 +48,6 @@
   padding: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
-
-/* Card header */
 .admin-card-header {
   display: flex;
   justify-content: space-between;
@@ -73,7 +65,6 @@
   height: 30px;
 }
 
-/* Card body */
 .admin-card-body {
   margin-top: 15px;
   gap: 10px;
@@ -85,7 +76,6 @@
   color: #2d6a4f;
 }
 
-/* Campaign bars */
 hr {
   margin: 10px 0;
   border: 1px solid #b0dab9;
@@ -117,7 +107,6 @@ hr {
   background-color: #2d6a4f;
 }
 
-/* Input search */
 .admin-search {
   width: 100%;
   padding: 8px 12px;
@@ -137,7 +126,6 @@ hr {
   box-shadow: 0 0 8px rgba(64, 145, 108, 0.35);
 }
 
-/* Report list */
 .admin-report {
   display: flex;
   justify-content: space-between;
@@ -147,7 +135,6 @@ hr {
   color: #1b4332;
 }
 
-/* Carousel */
 .admin-photo-carousel {
   width: 100%;
   max-width: 500px;
@@ -167,8 +154,6 @@ hr {
 .admin-photo-carousel img:hover {
   transform: scale(1.02);
 }
-
-/* Chart fallback */
 .admin-chart-placeholder {
   width: 100%;
   height: 150px;
@@ -179,8 +164,6 @@ hr {
   align-items: center;
   color: white;
 }
-
-/* Responsive */
 @media (max-width: 768px) {
   .admin-home {
     padding: 10px;
