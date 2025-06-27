@@ -1,0 +1,65 @@
+.foro-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px;
+}
+
+.foro-card {
+  background-color: #e0f6e8;
+  border: 1px solid #b6e2c8;
+  border-radius: 12px;
+  padding: 16px;
+  width: 220px;
+  min-height: 280px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease;
+}
+
+.foro-card:hover {
+  transform: scale(1.03);
+}
+
+.foro-card h2 {
+  font-size: 17px;
+  color: #316c43;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.foro-card p {
+  font-size: 13px;
+  color: #333;
+  margin: 4px 0;
+  text-align: center;
+}
+
+.foro-card img {
+  width: 100%;
+  max-height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.foro-card button {
+  background-color: #a2d8b7;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 12px;
+  color: #1f4b2e;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  align-self: center;
+  transition: background-color 0.3s ease;
+}
+
+.foro-card button:hover {
+  background-color: #89cfa4;
+}

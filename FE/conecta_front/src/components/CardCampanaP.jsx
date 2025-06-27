@@ -15,7 +15,7 @@
     const [clicked, setClicked] = useState(false);
     return (
       <div className="card-campana">
-        <input value={cantApoyos} className="cont-apoyos" />
+        <span className="cont-apoyos">{cantApoyos}</span>
         <h3 className="titulo-campana">{titulo}</h3>
         <p className="descripcion-campana">{descripcion}</p>
         <p className="direccion-campana">Dirección: {direccion} </p>

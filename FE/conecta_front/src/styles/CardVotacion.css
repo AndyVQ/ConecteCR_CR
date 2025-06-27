@@ -1,58 +1,67 @@
 .card-votacion {
-  background: linear-gradient(145deg, #bfe1c0, #e1f5e7);
-  border-radius: 16px;
-  box-shadow: 0 8px 16px rgba(120, 190, 140, 0.15);
-  padding: 1rem;
-  margin: 1rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #e5f9ec; 
+  border: 1px solid #b6e2c8;
+  border-radius: 14px;
+  width: 220px;
+  padding: 16px;
+  margin: 12px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease-in-out;
 }
 
 .card-votacion:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(120, 190, 140, 0.3);
+  transform: scale(1.02);
 }
 
 .titulo-votacion {
-  color: #2e7d32;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+  font-size: 18px;
+  color: #2f6f41;
+  text-align: center;
+  margin-bottom: 8px;
 }
 
-.descripcion-votacion {
-  color: #4b8b4a;
-  line-height: 1.5;
-}
-
+.descripcion-votacion,
 .fecha-votacion,
 .comunidad-votacion {
-  color: #5d9c6b;
-  font-size: 0.9rem;
-  margin-top: 0.25rem;
+  font-size: 13px;
+  color: #333;
+  margin: 4px 0;
+  text-align: center;
 }
 
 .cont-votos {
-  background-color: #d4edda;
-  color: #1b5e20;
-  border: none;
-  font-weight: bold;
-  width: 60px;
-  text-align: center;
+  background-color: #ffffff;
+  border: 1px solid #c0dbcf;
   border-radius: 30px;
-  margin-bottom: 1rem;
-  padding: 0.25rem 0.5rem;
+  padding: 4px 10px;
+  font-weight: bold;
+  text-align: center;
+  width: 60px;
+  margin-bottom: 10px;
+  color: #316c43;
 }
 
 .votar-btn {
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  background-color: #81c784 !important;
+  background-color: #a7dfbb;
   border: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  color: #205b32;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .votar-btn:hover {
-  background-color: #66bb6a !important;
-  transform: scale(1.05);
+  background-color: #91cfa8;
 }
 
-.votar-btn.clicked {
-  background-color: #a5d6a7 !important;
+.votar-btn:disabled {
+  background-color: #d6eede;
+  color: #7c9c84;
+  cursor: not-allowed;
 }
