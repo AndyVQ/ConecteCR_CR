@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getData } from "../services/fetch";
+import "../styles/CardForo.css";
 
 const CardForo = () => {
   const [foros, setForos] = useState([]);
@@ -23,7 +24,7 @@ const CardForo = () => {
   return (
     <div className="foro-container">
       {foros.map((foro) => (
-        <div className="foro" key={foro.id}>
+        <div className="foro-card" key={foro.id}>
           <h2>{foro.nombre_foro}</h2>
           <p>{foro.descripcion_foro}</p>
           <p>Fecha: {new Date(foro.fecha_foro).toLocaleDateString()}</p>
