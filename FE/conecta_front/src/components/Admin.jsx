@@ -18,8 +18,9 @@ function Admin() {
   const [news, setNews] = useState(0);
   const [forum, setForum] = useState(0);
   const [announcements, setAnnouncements] = useState(0);
+  const [forumLikes, setForumLikes] = useState(0);
+  const [forumComment, setForumComment] = useState(0);
 
- 
   useEffect(() => {
     async function fetchUsers() {
       const usersGet = await getData("usuarios/usuarios_get/") || [];
@@ -71,7 +72,19 @@ function Admin() {
       const names = NameGet.map(p => p.nombre_comunidad);
       setComunidadesNames(names);
     }
-    
+    async function fetchForumLikes() {
+      const likesGet = await getData("intForo/foro_get/") || [];
+      const likesTotales = likesGet.reduce((acumulador, foro) => acumulador + (foro.likes_foro || 0), 0);
+      console.log(likesTotales);
+      setForumLikes(likesTotales)
+    }
+    async function fetchForumComentario() {
+      const commentGet = await getData("intForo/comentario_foro/") || [];
+      const commentsTotales = commentGet.length
+      console.log(commentsTotales);
+      setForumComment(commentsTotales);
+    }
+
     fetchCampaings();
     fetchPetitions();
     fetchVotes();
@@ -84,6 +97,8 @@ function Admin() {
     fetchNews();
     fetchForum();
     fetchAnnouncements();
+    fetchForumLikes(),
+    fetchForumComentario()
   }, []);
 
   const filtrarReports = reports.filter(report =>
@@ -194,9 +209,9 @@ function Admin() {
             <Chart
               options={{
                 chart: { type: "pie" },
-                labels: ["Campañas", "Peticiones", "Votaciones"]
+                labels: ["Cantidad de Foros", "Cantidad de Likes", "Cantidad de Comentarios"]
               }}
-              series={[campaigns, petitions, votes]}
+              series={[forum, forumLikes, forumComment]}
               type="pie"
               width="100%"
               height="300"

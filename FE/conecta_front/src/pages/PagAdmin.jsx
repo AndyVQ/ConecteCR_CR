@@ -9,7 +9,7 @@ const PagAdmin = () => {
       <header>
         <AdminNavBar />
       </header>
-      <div className="pag-Admin">
+      <div className="pag-Admin" >
         <Admin />
       </div>
       <footer>
@@ -19,3 +19,4 @@ const PagAdmin = () => {
   );
 };
 export default PagAdmin;
+
