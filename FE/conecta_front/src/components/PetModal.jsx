@@ -4,6 +4,8 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { useEffect } from "react";
 import { getData, updateData } from "../services/fetch";
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
 
 function PetModal({ abrirModal, cerrarModal, peticiones }) {
   const [comunidades, setComunidades] = useState([]);
@@ -35,8 +37,13 @@ function PetModal({ abrirModal, cerrarModal, peticiones }) {
       descripcion_peticion: descripcionPeticionEditar,
       estado_peticion: estadoPeticionEditar,
     };
-    console.log("editInfo a enviar:", editInfo);
     await updateData(editInfo, "intPeticiones/peticiones_rud", id);
+    Swal.fire({
+      title: "Petición Editada",
+      text: "La petición ha sido editada exitosamente.",
+      icon: "success",
+      confirmButtonText: "Aceptar",
+    });
   }
 
   return (

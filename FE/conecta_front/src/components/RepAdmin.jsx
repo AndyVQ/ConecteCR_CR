@@ -3,6 +3,8 @@ import "../styles/campAdmin.css";
 import { useState, useEffect } from "react";
 import { getData, deleteData } from "../services/fetch";
 import RepModal from './RepModal';
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
 
 function RepAdmin() {
     const [reports, setReports] = useState([]);
@@ -40,6 +42,12 @@ function cerrarModalReporte() {
 async function deleteProd(id) { 
   await deleteData("intReportes/reportes_rud", id);
   setReload(!reload);
+  Swal.fire({
+    title: "Reporte Eliminado",
+    text: "El reporte ha sido eliminado exitosamente.",
+    icon: "success",
+    confirmButtonText: "Aceptar",
+  });
 }
   
   return (

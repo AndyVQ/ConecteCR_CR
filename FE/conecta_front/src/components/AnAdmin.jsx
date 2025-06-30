@@ -3,6 +3,8 @@ import "../styles/campAdmin.css";
 import { useState, useEffect } from "react";
 import { getData, deleteData } from "../services/fetch";
 import AnModal from './AnModal';
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
 
 function AnAdmin() {
     const [announce, setAnnounce] = useState([]);
@@ -40,6 +42,12 @@ function cerrarModalAnuncio() {
 async function deleteProd(id) { 
   await deleteData("intAnuncio/anuncio_rud", id);
   setReload(!reload);
+  Swal.fire({
+    title: "Anuncio Eliminado",
+    text: "El anuncio ha sido eliminado exitosamente.",
+    icon: "success",
+    confirmButtonText: "Aceptar",
+  });
 }
   
   return (

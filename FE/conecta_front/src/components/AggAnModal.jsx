@@ -3,6 +3,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { getData, postData } from "../services/fetch";
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
 
 function AggAnModal({ abrirModal, cerrarModal }) {
   const [comunidades, setComunidades] = useState([]);
@@ -55,10 +57,22 @@ function AggAnModal({ abrirModal, cerrarModal }) {
       usuario: localStorage.getItem("id_usuario"),
       imagen_anuncio: urlImagen,
     };
-    console.log(nuevaAnuncio);
-
     const peticion = await postData("intAnuncio/anuncio_create/", nuevaAnuncio);
-    console.log(peticion);
+    if (peticion) {
+      Swal.fire({
+        title: "Anuncio Agregado",
+        text: "El anuncio ha sido agregado exitosamente.",
+        icon: "success",
+        confirmButtonText: "Aceptar",
+      });
+    } else {
+      Swal.fire({
+        title: "Error",
+        text: "No se pudo agregar el anuncio.",
+        icon: "error",
+        confirmButtonText: "Aceptar",
+      });
+    }
   };
 
   return (

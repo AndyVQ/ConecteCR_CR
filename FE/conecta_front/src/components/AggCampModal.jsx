@@ -3,6 +3,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { getData, postData } from "../services/fetch";
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
 
 function AggCampModal({ abrirModal, cerrarModal }) {
   const [comunidades, setComunidades] = useState([]);
@@ -56,6 +58,12 @@ function AggCampModal({ abrirModal, cerrarModal }) {
       imagen_campana: urlImagen,
     };
     await postData("intCampanas/campanas/", nuevaCampana);
+    Swal.fire({
+      title: "Campaña creada",
+      text: "La campaña se ha creado correctamente.",
+      icon: "success",
+      confirmButtonText: "Aceptar",
+    });
   };
   return (
     <Modal show={abrirModal} onHide={cerrarModal}>

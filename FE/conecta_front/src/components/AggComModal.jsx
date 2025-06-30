@@ -3,6 +3,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { getData, postData } from "../services/fetch";
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
 
 function AggComModal({ abrirModal, cerrarModal, reload, setReload }) {
   const [comunidades, setComunidades] = useState([]);
@@ -23,6 +25,12 @@ function AggComModal({ abrirModal, cerrarModal, reload, setReload }) {
       direccion_comunidad: direccion,
     };
     await postData("comunidades/comunidades_create/", nuevaComunidad);
+    Swal.fire({
+      title: "Comunidad Agregada",
+      text: "La comunidad ha sido agregada exitosamente.",
+      icon: "success",
+      confirmButtonText: "Aceptar",
+    });
   };
 
   return (

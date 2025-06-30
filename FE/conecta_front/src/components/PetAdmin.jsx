@@ -3,6 +3,8 @@ import "../styles/campAdmin.css";
 import { useState, useEffect } from "react";
 import { getData, deleteData } from "../services/fetch";
 import PetModal from './PetModal';
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
 
 function PetAdmin() {
     const [petitions, setPetitions] = useState([]);
@@ -40,6 +42,12 @@ function cerrarModalPeticion() {
 async function deleteProd(id) { 
   await deleteData("intPeticiones/peticiones_rud", id);
   setReload(!reload);
+  Swal.fire({
+    title: "¡Éxito!",
+    text: "Petición eliminada correctamente.",
+    icon: "success",
+    confirmButtonText: "Aceptar",
+  });
 }
   
   return (

@@ -4,6 +4,8 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { useEffect } from "react";
 import { getData, updateData } from "../services/fetch";
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
 
 function ForoModal({ abrirModal, cerrarModal, foros }) {   
 
@@ -32,6 +34,12 @@ function ForoModal({ abrirModal, cerrarModal, foros }) {
         "imagen_foro": imagenForoEditar,
       };
       await updateData(editInfo,"intForo/foro_rud", id + "/");
+      Swal.fire({
+        title: "Foro Editado",
+        text: "El foro ha sido editado exitosamente.",
+        icon: "success",
+        confirmButtonText: "Aceptar",
+      });
     }
 
     return (

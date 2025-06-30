@@ -4,6 +4,8 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { useEffect } from "react";
 import { getData, updateData } from "../services/fetch";
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
 
 function RepModal({ abrirModal, cerrarModal, reportes }) {
   const [reports, setReports] = useState([]);
@@ -50,6 +52,12 @@ function RepModal({ abrirModal, cerrarModal, reportes }) {
       estado_reporte: estadoReporteEditar,
     };
     await updateData(editInfo, "intReportes/reportes_rud", id);
+    Swal.fire({
+      title: "Reporte Editado",
+      text: "El reporte ha sido editado exitosamente.",
+      icon: "success",
+      confirmButtonText: "Aceptar",
+    });
   }
 
   return (

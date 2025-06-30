@@ -3,6 +3,8 @@ import "../styles/campAdmin.css";
 import { useState, useEffect } from "react";
 import { getData, deleteData } from "../services/fetch";
 import CampModal from "./CampModal";
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
 
 function CampAdmin() {
   const [campaigns, setCampaigns] = useState([]);
@@ -55,6 +57,12 @@ function CampAdmin() {
   async function deleteProd(id) {
     await deleteData("intCampanas/campanas_rud", id + "/");
     setReload(!reload);
+    Swal.fire({
+      title: "¡Éxito!",
+      text: "Campaña eliminada correctamente.",
+      icon: "success",
+      confirmButtonText: "Aceptar",
+    });
   }
 
   return (

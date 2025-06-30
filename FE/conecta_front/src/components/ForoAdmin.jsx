@@ -3,6 +3,8 @@ import "../styles/campAdmin.css";
 import { useState, useEffect } from "react";
 import { getData, deleteData } from "../services/fetch";
 import ForoModal from './ForoModal';
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
 
 function ForoAdmin() {
     const [forum, setForum] = useState([]);
@@ -40,6 +42,12 @@ function cerrarModalForo() {
 async function deleteProd(id) { 
   await deleteData("intForo/foro_rud", id +"/");
   setReload(!reload);
+  Swal.fire({
+    title: "Foro Eliminado",
+    text: "El foro ha sido eliminado exitosamente.",
+    icon: "success",
+    confirmButtonText: "Aceptar",
+  });
 }
   
   return (

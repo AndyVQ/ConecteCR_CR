@@ -3,6 +3,8 @@ import "../styles/campAdmin.css";
 import { useState, useEffect } from "react";
 import { getData, deleteData } from "../services/fetch";
 import VotModal from "./VotModal";
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
 
 function VotAdmin() {
   const [votes, setVotes] = useState([]);
@@ -50,6 +52,12 @@ function VotAdmin() {
   async function deleteProd(id) {
     await deleteData("intVotaciones/votaciones_rud", id);
     setReload(!reload);
+    Swal.fire({
+      title: "¡Éxito!",
+      text: "Votación eliminada correctamente.",
+      icon: "success",
+      confirmButtonText: "Aceptar",
+    });
   }
 
   return (

@@ -4,6 +4,8 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { useEffect } from "react";
 import { getData, updateData } from "../services/fetch";
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
 
 function NotModal({ abrirModal, cerrarModal, noticias }) {   
 
@@ -32,6 +34,12 @@ function NotModal({ abrirModal, cerrarModal, noticias }) {
         "titular_notica": titularNoticiaEditar,
       };
       await updateData(editInfo,"intNoticias/noticia_rud", id);
+      Swal.fire({
+        title: "Noticia Editada",
+        text: "La noticia ha sido editada exitosamente.",
+        icon: "success",
+        confirmButtonText: "Aceptar",
+      });
     }
 
     return (
