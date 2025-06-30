@@ -17,7 +17,7 @@ function CampAdmin() {
       setCampaigns(campaignsGet);
     }
     fetchCampaigns();
-  }, [campaigns]);
+  }, [reload]);
 
   const filtarCampana = campaigns.filter(
     (campaign) =>
@@ -68,37 +68,39 @@ function CampAdmin() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <table>
-          <thead>
-            <tr>
-              <th>Usuario</th>
-              <th>Comunidad</th>
-              <th>Campaña</th>
-              <th>Descripción</th>
-              <th>Fecha de creación</th>
-              <th>Dirección</th>
-              <th>Editar</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filtarCampana.map((campaign, index) => (
-              <tr key={index}>
-                <td>{campaign.nombre_usuario}</td>
-                <td>{campaign.nombre_comunidad}</td>
-                <td>{campaign.nombre_campana}</td>
-                <td>{campaign.descripcion_campana}</td>
-                <td>{campaign.fecha_campana}</td>
-                <td>{campaign.direccion_campana}</td>
-                <td>
-                  <button onClick={() => abrirModalCampana(campaign)}>
-                    ✏️
-                  </button>
-                  <button onClick={() => deleteProd(campaign.id)}>🗑️</button>
-                </td>
+        <div className="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Usuario</th>
+                <th>Comunidad</th>
+                <th>Campaña</th>
+                <th>Descripción</th>
+                <th>Fecha de creación</th>
+                <th>Dirección</th>
+                <th>Editar</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {filtarCampana.map((campaign, index) => (
+                <tr key={index}>
+                  <td>{campaign.nombre_usuario}</td>
+                  <td>{campaign.nombre_comunidad}</td>
+                  <td>{campaign.nombre_campana}</td>
+                  <td>{campaign.descripcion_campana}</td>
+                  <td>{campaign.fecha_campana}</td>
+                  <td>{campaign.direccion_campana}</td>
+                  <td>
+                    <button onClick={() => abrirModalCampana(campaign)}>
+                      ✏️
+                    </button>
+                    <button onClick={() => deleteProd(campaign.id)}>🗑️</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
         {abrirModal && (
           <CampModal
             abrirModal={abrirModal}

@@ -2,43 +2,48 @@
   display: flex;
   height: 100vh;
   font-family: Arial, sans-serif;
+  overflow: hidden;
 }
 
 .main-content {
   flex: 1;
-  padding: 20px;
+  padding: 12px;
   background-color: #f8f8f8;
+  overflow-y: auto;
+  max-height: 100vh;
 }
 
 .main-content h2 {
-  margin-bottom: 20px;
-  font-size: 24px;
+  margin-bottom: 12px;
+  font-size: 20px;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
   background-color: white;
+  font-size: 14px;
 }
 
 th {
   background-color: #a8d5a2;
-  padding: 12px;
+  padding: 8px;
   text-align: left;
   font-weight: bold;
 }
 
 td {
-  padding: 12px;
+  padding: 8px;
   border-top: 1px solid #ccc;
 }
 
 td button {
-  margin-right: 6px;
-  padding: 6px 8px;
+  margin-right: 4px;
+  padding: 4px 6px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 13px;
 }
 
 td button:hover {
@@ -46,16 +51,17 @@ td button:hover {
 }
 
 .sidebar {
-  width: 200px;
+  width: 180px;
   background-color: #d8f3dc;
-  padding: 20px;
+  padding: 16px;
   border-left: 2px solid #ccc;
+  overflow-y: auto;
 }
 
 .sidebar h3 {
-  font-size: 20px;
+  font-size: 18px;
   text-align: right;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .sidebar ul {
@@ -65,30 +71,41 @@ td button:hover {
 }
 
 .sidebar li {
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   cursor: pointer;
   font-weight: bold;
   color: #2d6a4f;
+  font-size: 14px;
 }
 
 .sidebar li.active {
   background-color: #95d5b2;
-  padding: 5px;
+  padding: 4px;
   border-radius: 4px;
 }
-.admin-search-1{
-  width: 30%;
-  padding: 8px 12px;
-  margin-bottom: 12px;
+
+.admin-search-1 {
+  width: 100%;
+  padding: 6px 10px;
+  margin-bottom: 10px;
   border: 1px solid #a3cba5;
-  border-radius: 8px;
+  border-radius: 6px;
   outline: none;
-  font-size: 14px;
+  font-size: 13px;
   background-color: #ffffff;
-  box-shadow: 0 0 5px rgba(64, 145, 108, 0.2);
+  box-shadow: 0 0 4px rgba(64, 145, 108, 0.15);
   transition: all 0.3s ease;
 }
+
 .admin-search-1:focus {
   border-color: #40916c;
-  box-shadow: 0 0 8px rgba(64, 145, 108, 0.35);
+  box-shadow: 0 0 6px rgba(64, 145, 108, 0.3);
+}
+
+.table-container {
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: auto;
+  border: 1px solid #ccc;
+  border-radius: 6px;
 }
