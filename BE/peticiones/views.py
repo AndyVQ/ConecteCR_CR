@@ -25,7 +25,7 @@ class PermisosPersonalizados(BasePermission):
         
         if "usuario" in grupos_usuario:
             if metodo_peticion in ["GET", "POST", "PATCH"]:
-                return False
+                return True
             if metodo_peticion in SAFE_METHODS:
                 return True
             return False

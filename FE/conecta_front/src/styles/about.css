@@ -1,0 +1,12 @@
+.about-container {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 20px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.about-container h2 {
+  color: #56a85a;
+  margin-bottom: 20px;
+}

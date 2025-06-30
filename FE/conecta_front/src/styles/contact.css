@@ -1,0 +1,12 @@
+.contact-container {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 20px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.contact-container h2 {
+  color: #56a85a;
+  margin-bottom: 20px;
+}

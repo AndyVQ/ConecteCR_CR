@@ -1,4 +1,5 @@
 import "../styles/footer.css";
+import { Link } from "react-router-dom";
 
 const FooterPage = () => {
   return (
@@ -7,13 +8,13 @@ const FooterPage = () => {
         <div className="enlaces-pie">
           <ul>
             <li>
-              <a href="#">Inicio</a>
+               <Link to="/">Inicio</Link>
             </li>
             <li>
-              <a href="#">Acerca de</a>
+             <Link to="/Acerca">Acerca de</Link>
             </li>
             <li>
-              <a href="#">Contacto</a>
+             <Link to="/Contacto">Contacto</Link>
             </li>
           </ul>
         </div>

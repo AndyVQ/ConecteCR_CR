@@ -25,6 +25,8 @@ import PagComAdmin from "../pages/PagComAdmin";
 import PagComModal from "../pages/PagComModal";
 import PagForo from "../pages/PagForo";
 import PagForoDetalle from "../pages/PagForoDetalle";
+import PagContacto from "../pages/PagContacto";
+import PagAcerca from "../pages/PagAcerca";
 
 function Routing() {
   return (
@@ -61,6 +63,8 @@ function Routing() {
           <Route path="/PagAnunc" element={<PagAnuncios />} />
           <Route path="/ComAdmin" element={<PagComAdmin />} />
           <Route path="/ForoDetalle/:id" element={<PagForoDetalle />} />
+          <Route path="/Contacto" element={<PagContacto />} />
+          <Route path="/Acerca" element={<PagAcerca />} />
         </Routes>
       </Router>
     </div>
