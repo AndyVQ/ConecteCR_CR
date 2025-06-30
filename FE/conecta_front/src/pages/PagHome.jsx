@@ -2,8 +2,9 @@ import Navbar from "../components/NavBar";
 import CarouselComp from "../components/CarouselComp";
 import Cards from "../components/Card";
 import FooterHighFashion from "../components/Footer";
-import CardNoticia from "../components/CardNoticia";
+import CardNoticiaQ from "../components/CardNoticiaQ";
 import "../styles/PagHome.css";
+
 const PagHome = () => {
   return (
     <>
@@ -15,7 +16,7 @@ const PagHome = () => {
         <CarouselComp />
       </article>
       <div className="card1">
-        <CardNoticia
+        <CardNoticiaQ
           title="ConecteCR es la pagina mas visitada en Cartago"
           description="ConecteCR esta renovando las comunidades de Costa Rica."
           imageUrl="https://www.journeygourmet.com/continentes/America_Norte/Costa_Rica/Cartago/Cartago/imagenBig.jpg"
@@ -24,7 +25,7 @@ const PagHome = () => {
       </div>
       <div className="card2">
         {" "}
-        <CardNoticia
+        <CardNoticiaQ
           title="Plataforma Digital que Impulsa la Comunicación y el Comercio Local"
           description="ConecteCR une comunidades, promueve el comercio local y facilita la participación."
           imageUrl="https://media.istockphoto.com/id/1608707365/es/foto/vista-a%C3%A9rea-de-cartago-costa-rica-durante-la-primavera.jpg?s=170667a&w=0&k=20&c=HCtGBhcMMimEIYWDuVxTWDDtXjuOFXop7lP9G4nBiYI="
