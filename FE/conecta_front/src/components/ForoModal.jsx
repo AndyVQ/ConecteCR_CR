@@ -31,7 +31,7 @@ function ForoModal({ abrirModal, cerrarModal, foros }) {
         "descripcion_foro": descripcionForoEditar,
         "imagen_foro": imagenForoEditar,
       };
-      await updateData(editInfo,"intForo/foro_rud", id);
+      await updateData(editInfo,"intForo/foro_rud", id + "/");
     }
 
     return (

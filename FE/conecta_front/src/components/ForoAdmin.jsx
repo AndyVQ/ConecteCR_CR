@@ -38,7 +38,7 @@ function cerrarModalForo() {
 }
 
 async function deleteProd(id) { 
-  await deleteData("intForo/foro_rud", id);
+  await deleteData("intForo/foro_rud", id +"/");
   setReload(!reload);
 }
   

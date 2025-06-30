@@ -23,7 +23,6 @@ function AggComModal({ abrirModal, cerrarModal, reload, setReload }) {
       direccion_comunidad: direccion,
     };
     await postData("comunidades/comunidades_create/", nuevaComunidad);
-    setReload(!reload);
   };
 
   return (
