@@ -3,6 +3,8 @@ import "../styles/campAdmin.css";
 import { useState, useEffect } from "react";
 import { getData, deleteData } from "../services/fetch";
 import NotModal from './NotModal';
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
 
 
 function NotAdmin() {
@@ -41,6 +43,11 @@ function cerrarModalNoticia() {
 async function deleteProd(id) { 
   await deleteData("intNoticias/noticia_rud", id);
   setReload(!reload);
+  Swal.fire({
+    title: "Noticia eliminada",
+    icon: "success",
+    confirmButtonText: "Aceptar",
+  });
 }
 
   return (

@@ -18,7 +18,7 @@ class PermisosPersonalizados(BasePermission):
         metodo_peticion = request.method
         
         if "usuario" in grupos_usuario:
-            if metodo_peticion in SAFE_METHODS:
+            if metodo_peticion in SAFE_METHODS or metodo_peticion in ["POST"]:
                 return True
             return False
         

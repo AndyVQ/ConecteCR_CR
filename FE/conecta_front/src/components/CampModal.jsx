@@ -4,6 +4,8 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { useEffect } from "react";
 import { getData, updateData } from "../services/fetch";
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
 
 function CampModal({ abrirModal, cerrarModal, campanas }) {
   const [campaigns, setCampaigns] = useState([]);
@@ -47,6 +49,12 @@ function CampModal({ abrirModal, cerrarModal, campanas }) {
       imagen_campana: imagenCampanaEditar,
     };
     await updateData(editInfo, "intCampanas/campanas_rud", id + "/");
+    Swal.fire({
+      title: "Campaña Editada",
+      text: "La campaña ha sido editada exitosamente.",
+      icon: "success",
+      confirmButtonText: "Aceptar",
+    });
   }
 
   return (

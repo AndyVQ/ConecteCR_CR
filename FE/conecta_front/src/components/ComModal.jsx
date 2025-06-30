@@ -4,6 +4,8 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { useEffect } from "react";
 import { getData, updateData } from "../services/fetch";
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
 
 function ComModal({ abrirModal, cerrarModal, comunidades }) {
   const [comunidades2, setComunidades] = useState([]);
@@ -25,6 +27,12 @@ function ComModal({ abrirModal, cerrarModal, comunidades }) {
       direccion_comunidad: direccionComunidadEditar,
     };
     await updateData(editInfo, "comunidades/comunidades_rud", id);
+    Swal.fire({
+      title: "Comunidad Editada",
+      text: "La comunidad ha sido editada exitosamente.",
+      icon: "success",
+      confirmButtonText: "Aceptar",
+    });
   }
 
   return (

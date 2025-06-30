@@ -18,7 +18,7 @@ class PermisosPersonalizados(BasePermission):
         metodo_peticion = request.method
         
         if "usuario" in grupos_usuario:
-            if metodo_peticion in SAFE_METHODS:
+            if metodo_peticion in SAFE_METHODS or metodo_peticion in ["POST"]:
                 return True
             return False
         
@@ -37,7 +37,7 @@ class PermisosPersonalizados(BasePermission):
         return False
 
 class CampanaCreateView(ListCreateAPIView):
-    # permission_classes = [PermisosPersonalizados]
+    permission_classes = [PermisosPersonalizados]
     queryset = Campana.objects.all()
     serializer_class = CampanaSerializer
     
@@ -54,7 +54,7 @@ class CampanaListApiView(ListAPIView):
     serializer_class = CampanaSerializer
 
 class ApoyoCreateView(ListCreateAPIView):
-    # permission_classes = [PermisosPersonalizados]
+    permission_classes = [PermisosPersonalizados]
     queryset = Apoyo.objects.all()
     serializer_class = ApoyoSerializer
 

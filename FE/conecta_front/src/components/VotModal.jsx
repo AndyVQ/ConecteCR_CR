@@ -4,6 +4,8 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { useEffect } from "react";
 import { getData, updateData } from "../services/fetch";
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
 
 function VotModal({ abrirModal, cerrarModal, votaciones }) {
   const [votes, setVotes] = useState([]);
@@ -44,6 +46,12 @@ function VotModal({ abrirModal, cerrarModal, votaciones }) {
       imagen_votacion: imagenVotacionEditar,
     };
     await updateData(editInfo, "intVotaciones/votaciones_rud", id);
+    Swal.fire({
+      title: "Votación Editada",
+      text: "La votación ha sido editada exitosamente.",
+      icon: "success",
+      confirmButtonText: "Aceptar",
+    });
   }
 
   return (

@@ -3,6 +3,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { getData, postData } from "../services/fetch";
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
 
 function AggVotModal({ abrirModal, cerrarModal, reload, setReload }) {
   const [comunidades, setComunidades] = useState([]);
@@ -29,6 +31,12 @@ function AggVotModal({ abrirModal, cerrarModal, reload, setReload }) {
       usuario: localStorage.getItem("id_usuario"),
     };
     await postData("intVotaciones/votaciones/", nuevaVotacion);
+    Swal.fire({
+      title: "Votación Creada",
+      text: "La votación ha sido creada exitosamente.",
+      icon: "success",
+      confirmButtonText: "Aceptar",
+    });
   };
 
   return (

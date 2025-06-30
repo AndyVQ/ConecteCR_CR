@@ -4,6 +4,8 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { useEffect } from "react";
 import { getData, updateData } from "../services/fetch";
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
 
 function AnModal({ abrirModal, cerrarModal, anuncios }) {   
 
@@ -33,6 +35,12 @@ function AnModal({ abrirModal, cerrarModal, anuncios }) {
         "tipo_anuncio": tipoAnuncioEditar,
       };
       await updateData(editInfo,"intAnuncio/anuncio_rud", id);
+      Swal.fire({
+        title: "Anuncio Editado",
+        text: "El anuncio ha sido editado exitosamente.",
+        icon: "success",
+        confirmButtonText: "Aceptar",
+      });
     }
 
     return (

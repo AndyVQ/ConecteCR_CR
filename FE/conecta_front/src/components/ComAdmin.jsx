@@ -3,6 +3,8 @@ import "../styles/campAdmin.css";
 import { useState, useEffect } from "react";
 import { getData, deleteData } from "../services/fetch";
 import ComModal from "./ComModal";
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
 
 function ComAdmin() {
   const [communities, setCommunities] = useState([]);
@@ -42,6 +44,12 @@ useEffect(() => {
   async function deleteProd(id) {
     await deleteData("comunidades/comunidades_rud", id);
     setReload(!reload);
+    Swal.fire({
+      title: "Comunidad Eliminada",
+      text: "La comunidad ha sido eliminada exitosamente.",
+      icon: "success",
+      confirmButtonText: "Aceptar",
+    });
   }
   return (
     <div className="dashboard-container">

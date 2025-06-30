@@ -3,6 +3,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { getData, postData } from "../services/fetch";
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
 
 function AggNotModal({ abrirModal, cerrarModal }) {
   const [nombre, setNombre] = useState("");
@@ -43,6 +45,12 @@ function AggNotModal({ abrirModal, cerrarModal }) {
       imagen_noticia: urlImagen,
     };
     await postData("intNoticias/noticia_create/", nuevaNoticia);
+    Swal.fire({
+      title: "Noticia Agregada",
+      text: "La noticia ha sido agregada exitosamente.",
+      icon: "success",
+      confirmButtonText: "Aceptar",
+    });
   };
 
   return (
