@@ -1,7 +1,6 @@
 import "../styles/cardNot.css";
 
 
-
 function CardNoticia({ title, description, imageUrl, link }) {
   return (
     <div className="container">

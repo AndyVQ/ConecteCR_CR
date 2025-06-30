@@ -1,4 +1,3 @@
-
 import AdminNavBar from "../components/AdminNavBar";  
 import FooterHighFashion from "../components/Footer";
 import NotAdmin from "../components/NotAdmin";
