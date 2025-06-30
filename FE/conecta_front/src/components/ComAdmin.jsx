@@ -46,7 +46,7 @@ useEffect(() => {
   return (
     <div className="dashboard-container">
       <div className="main-content">
-        <h2>Campañas</h2>
+        <h2>Comunidades</h2>
         <input
           type="text"
           placeholder="Buscar Comunidades"
