@@ -10,7 +10,7 @@
   padding: 12px;
   background-color: #f8f8f8;
   overflow-y: auto;
-  max-height: 100vh;
+  max-height: 90vh;
 }
 
 .main-content h2 {
@@ -85,7 +85,7 @@ td button:hover {
 }
 
 .admin-search-1 {
-  width: 100%;
+  width: 20%;
   padding: 6px 10px;
   margin-bottom: 10px;
   border: 1px solid #a3cba5;
