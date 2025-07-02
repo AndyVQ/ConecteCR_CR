@@ -19,7 +19,7 @@ function CampAdmin() {
       setCampaigns(campaignsGet);
     }
     fetchCampaigns();
-  }, [reload]);
+  }, [campaigns]);
 
   const filtarCampana = campaigns.filter(
     (campaign) =>

@@ -14,6 +14,7 @@ function AggCampModal({ abrirModal, cerrarModal }) {
   const [direccion, setDireccion] = useState("");
   const [fecha, setFecha] = useState("");
   const [imagen, setImagen] = useState(null);
+  const [setReload, setSetReload] = useState(false);
 
   const imagenCloudinary = async (foto) => {
     const formData = new FormData();
@@ -58,6 +59,7 @@ function AggCampModal({ abrirModal, cerrarModal }) {
       imagen_campana: urlImagen,
     };
     await postData("intCampanas/campanas/", nuevaCampana);
+    setSetReload(true);
     Swal.fire({
       title: "Campaña creada",
       text: "La campaña se ha creado correctamente.",
