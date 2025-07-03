@@ -1,16 +1,18 @@
 .card-reporte {
   background-color: #ffffffd9;
   border-radius: 18px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  padding: 20px;
-  width: 200px;
-  height: 400px;
-  margin: 25px 10px;
+  box-shadow: 0 10px 12px rgba(0, 0, 0, 0.06);
+  padding: 30px;
+  width: 240px;
+  height: 550px;
+  margin: 25px 0px;
   font-family: 'Segoe UI', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transition: transform 0.2s ease;
+  margin-left: auto;
+  
 }
 
 .card-reporte:hover {

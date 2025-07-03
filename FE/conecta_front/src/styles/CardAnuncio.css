@@ -10,6 +10,7 @@
   font-family: 'Segoe UI', sans-serif;
   overflow: hidden;
   transition: transform 0.2s ease;
+  
 }
 
 .card-anuncio-vertical:hover {

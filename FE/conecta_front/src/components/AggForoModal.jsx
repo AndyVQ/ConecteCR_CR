@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import { getData, postData } from "../services/fetch";
+import { postData } from "../services/fetch";
 import Swal from "sweetalert2";
 import "sweetalert2/src/sweetalert2.scss";
 
@@ -42,7 +42,9 @@ function AggForoModal({ abrirModal, cerrarModal }) {
       imagen_foro: urlImagen,
     };
     await postData("intForo/foro_create/", nuevoForo);
-    Swal.fire({ title: "Agregada con éxito", icon: "success" });
+    Swal.fire({ title: "Agregada con éxito", icon: "success" }).then(() => {
+      window.location.reload();
+    });
   };
 
   return (

@@ -1,55 +1,53 @@
 .card-noticia {
-  background-color: #e6f9f0;
-  border: 1px solid #bce4d1;
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  width: 260px;
-  margin: 14px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  font-family: 'Segoe UI', sans-serif;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.2s ease;
+  max-width: 350px;
+  margin-left: 50px;
+  transition: transform 0.3s ease;
+    
 }
 
 .card-noticia:hover {
-  transform: translateY(-3px);
+  transform: translateY(-5px); 
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); 
 }
 
 .imagen-card-noticia {
   width: 100%;
-  height: 150px;
+  height: 200px;
   object-fit: cover;
+  border-bottom: 2px solid #5cdb95; 
 }
 
 .contenido-card-noticia {
-  padding: 14px;
-  text-align: center;
+  padding: 15px;
 }
 
 .titulo-card-noticia {
-  font-size: 18px;
-  color: #2f6f41;
-  margin-bottom: 8px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #1d5c63; 
+  margin-bottom: 10px;
 }
 
 .descripcion-card-noticia {
-  font-size: 14px;
-  color: #333;
-  margin-bottom: 12px;
+  font-size: 1rem;
+  color: #3e8e41; 
+  margin-bottom: 15px;
 }
 
 .boton-card-noticia {
   display: inline-block;
-  padding: 8px 16px;
-  background-color: #3ddc7f;
-  color: white;
-  border-radius: 8px;
-  font-size: 13px;
+  background-color: #2aba42; 
+  color: #ffffff;
+  padding: 10px 15px;
   text-decoration: none;
-  transition: background-color 0.2s ease;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
 }
 
 .boton-card-noticia:hover {
-  background-color: #32c06f;
+  background-color: #38a66f; 
 }
